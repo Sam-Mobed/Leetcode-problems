@@ -1,0 +1,17 @@
+I had already solved this one. In my previous solution, I had already all the alphabets as the keys to the dictionary. I found this silly, as hard-coding
+the entire dict is quite a novice approach. It works here because the dict is relatively small, but for real-world applications this would almost never fly.
+
+So I updated the solution, this time the algorithm starts with an empty dictionary, and keys are added to it every time a new character is added. Interestingly,
+this solution has a slower runtime and uses more space than my previous one. 
+
+The difference in performance and space usage between the two approaches can be attributed to how dictionaries are implemented in Python and the characteristics of the input data.
+
+Approach 1: Hard-coded dictionary keys
+If you have a hard-coded dictionary where all the keys are already defined, the dictionary creation and key-value assignments happen once during initialization. This approach has a constant time complexity for dictionary creation since it only needs to be done once.
+
+Approach 2: Dynamic dictionary creation
+In this approach, the dictionary starts empty and keys are added as new characters are encountered. This means that for each new character, the dictionary needs to perform operations like hash computation, checking for collisions, and potentially resizing the underlying data structure. These operations add overhead, which can affect performance. Additionally, memory needs to be allocated for the new keys and their associated values, which contributes to increased space usage.
+
+The performance and space usage differences between the two approaches can become more significant when the input data has a large number of distinct characters or when there are frequent additions of new keys to the dictionary.
+
+To optimize the dynamic dictionary creation approach, you can consider preallocating the dictionary with a reasonable size or using techniques like defaultdict from the collections module, which can provide default values for new keys without requiring explicit key-value assignments.

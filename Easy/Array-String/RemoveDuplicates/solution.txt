@@ -1,0 +1,7 @@
+Optimal solution:
+It would have been better to have had a second pointer instead of using a for loop.
+
+Basically you have a left pointer that keep tracks of where you swap the new value you see, and a right pointer that goes through the list and compares each newElement
+with the previous one to see if it can find a new element to insert.
+
+The algorithm is done when the right pointer reaches the end of the list, and the return value is the left pointer (which is on an index).
