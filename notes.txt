@@ -1,0 +1,9 @@
+The process of solving a problem
+
+It's important to think about the problem first before starting to write code.
+
+=> Think of the corner cases; the solution you'll write might not need any extra code to deal with all of them. But it's important to keep them in mind.
+
+=> Write the general solution; this is the solution that will work with most cases. How does it handle corner cases?
+
+=> Add the code that needs to handle corner cases; your solution might already take care of this, so this step isn't always necessary.

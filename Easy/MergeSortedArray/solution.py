@@ -1,33 +1,37 @@
 
 
 def mergeArrays(nums1, nums2, m, n):
-    i=0
-    j=0
-    if(n==0):
-        return
-    if(m==0):
-        nums1.clear()
+    if m==0:
+        #nums1=nums2 this doesn't work, because you are creating a new pointer to nums2, but the original list pointed to by nusm1 doesn't change, and that is exactly what the solution is looking at. The judge doesn't follow the pointer, it looks at the original place in the memory where nums1 was located
+        del nums1 [:]
         nums1+=nums2
-        #nums1=nums2 can't change the identity of mutable obj inside of a function
         return
-    while j<n:
-        while(nums1[i]<nums2[j]):
-            i+=1
-            if (i==len(nums1)):
-                #here we have to clear all the remaining 0's inside
-                #nums1
-                nums1+=nums2 #we've gone through nums1
-                return
-        nums1.insert(i, nums2[j])
-        nums2.pop(j)
-        j+=1
+    if n==0:
+        return
+
+    #remember, n and m represent the actual length, not the index.
+    n-=1
+    m-=1
+    while n>-1:
+        if (nums2[n]>=nums1[m]):
+            nums1.pop() #pop the last element first so there is less to shift
+            nums1.insert(m+1, nums2[n])
+            n-=1
+        elif (m!=0):
+            m-=1
+        else:
+            #nums1=nums2[:n+1]+nums1 we get the result but this creates a new list instead of storing inside nums1
+            for i in range(n, -1, -1):
+                nums1.insert(0, nums2[i])
+                nums1.pop()
+            break
 
 #tests
 #it works but we have to get rid of the 0's at the end of nums1
 if __name__=="__main__":
-    test1=[1,2,3,0,0,0]
-    nums12=[2,5,6]
-    mergeArrays(test1, nums12, 3, 3)
+    test1=[2,0]
+    nums12=[1]
+    mergeArrays(test1, nums12, 1, 1)
     print(test1) #[1,2,2,3,5,6]
 
     test2=[1]

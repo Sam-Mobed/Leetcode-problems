@@ -1,0 +1,22 @@
+https://www.youtube.com/watch?v=P1Ic85RarKY
+
+lazy solution:
+create a temp list, and have two pointers for nums1 and nums2. you iterate through them until nums2 is done, and then you copy temp into the where nums1 is located.
+
+This solution uses O(n) time complexity and O(n) space ecomplexity.
+
+Optimal solution:
+I was close to the optimal solution. Since the last n elements of nums1 are 0's, it's better to start inserting elements at the end of the list.
+However, instead of inserting the nums2 element at m inside of nums1, we assign it to the last element of nums1: nums1[-1]=nums2[n-1]
+(or alternatively nums[m+n-1]=nums2[n-1]).
+
+The way I decerement the indices is correct. If a nums2 int is added to nums1, n is decremented and m stays in place. The third pointer pointing to the end of nums1 is 
+alos decremented (we go after the remaining 0's).
+
+The difference with the optimal solution is that if an element of nums1 is bigger, then it takes the place of the 0 the thrid pointer is pointing to, and its original
+index is substituted by a 0 (not really, the pointer points to it as an empty hole, for the next time an element needs to be inserted).
+
+You can't stop when n is empty, you have to make sure the remaning elements in m are sorted and there are no holes.
+
+
+
