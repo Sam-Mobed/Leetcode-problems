@@ -9,9 +9,9 @@ def removeElem(nums, val):
             break
         if(nums[index]==val):
             nums.pop(index)
-            continue
-        index+=1
-        notVal+=1
+        else:
+            index+=1
+            notVal+=1
     
     return notVal
 

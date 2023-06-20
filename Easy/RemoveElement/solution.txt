@@ -1,0 +1,10 @@
+Optimal solution:
+The problem with my solution is that every time you pop an element inside the list, you have to shift the rest, which increases the running time unnecessarily.
+
+We don't need to actually remove the elements that are equal to the element we want to remove; we go through the list, and keep a pointer. every time we hit the element 
+we want to remove, we replace it's value with the next element in the list that we don't need to remove. 
+
+Basically we swap the places, and at the end we are left with all the elements that we want to keep at the beginning of the list, and those we don't want at the end 
+of the list.
+
+and at the end we return k, which is the index pointing to the first element that is moved to second part of the list.

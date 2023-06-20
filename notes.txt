@@ -7,3 +7,6 @@ It's important to think about the problem first before starting to write code.
 => Write the general solution; this is the solution that will work with most cases. How does it handle corner cases?
 
 => Add the code that needs to handle corner cases; your solution might already take care of this, so this step isn't always necessary.
+
+=> during interviews, your time is limited, don't try to come up with the optimal solution in one shot. First just have a working solution, and then if you have time
+    optimize it.
