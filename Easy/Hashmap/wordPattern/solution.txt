@@ -1,0 +1,7 @@
+Basically the same story as the isomorphic strings problems.
+Time complexity is O(n+m)
+
+you can use the zip() function to make your life easier, instead of enumerate(). since we know that both the string and the list have the same length
+(before the loop we check if the length is not the same and return false.)
+
+The neetcode solution is far more elegant, so try again later.

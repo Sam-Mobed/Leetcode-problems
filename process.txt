@@ -2,6 +2,11 @@ The process of solving a problem
 
 It's important to think about the problem first before starting to write code.
 
+=>One bad habit I have is I rush the code and spam submit to see if it passes. This is bad, first think about your code, write down on paper your plans, then 
+    start coding. This shows that your patient and that your solutions are well thought through. And this is your attitude towards coding.
+
+=> Don't make assumptions about code unless it is given to you in the problem. ask the interviewer
+
 => Think of the corner cases; the solution you'll write might not need any extra code to deal with all of them. But it's important to keep them in mind.
 
 => Write the general solution; this is the solution that will work with most cases. How does it handle corner cases?

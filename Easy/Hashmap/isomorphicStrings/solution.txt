@@ -1,0 +1,4 @@
+Fairly decent performance for my solution.
+
+I use a dictionary and a list. The solution uses two dictionaries. When I was trying to solve the problem, I tried to have the mappings of s to t and t to s in 
+the same dictionary, but the solution puts them in two dicts.
