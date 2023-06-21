@@ -1,0 +1,35 @@
+My solution is obviously not great, as you have to look inside the dict and create new dicts often, which makes the algorithm very slow. 
+Also I didn't solve the follow up.
+
+New solution: sort the array, and then iterate through it, once we find the majority element, return it. this should also solve the follow up question.
+This second solution is a lot better, but still not what the follow-up is looking for:
+The provided solution does not use O(1) space and does not run in linear time. 
+
+The space complexity of the solution is O(1) for auxiliary variables, but it doesn't account for the space used by the `nums.sort()` operation. The `sort()` method in Python typically has a time complexity of O(n log n) where n is the length of the list `nums`. Although it sorts the list in place, it incurs additional space complexity during the sorting process.
+
+Regarding time complexity, the solution performs a sort operation, which has a time complexity of O(n log n) in the worst case. After sorting, it traverses the sorted list in a single pass, which has a time complexity of O(n). Therefore, the overall time complexity is dominated by the sorting step, resulting in a time complexity of O(n log n).
+
+If you want to achieve linear time complexity, you can use a different algorithm like Boyer-Moore Voting Algorithm, which is specifically designed for finding the majority element in linear time and constant space.
+
+
+Optimal soluton:
+The optimal solution uses the Boyer-Moore algorithm.
+The fact that we are guaranteed that there will be a majority element allows us to solve the problem with O(1) space.
+
+you need a variable that keeps track of the candidate you are considering as the majority element. 
+You can just pick the first element in your list.
+You also need to have a variable that keeps track of the count of your candidate. since we choose the first one, count=1.
+
+now you iterate through the list, when we get to the next element if it's the same as our candidate then we just increment the count.
+If the next element is not the same as our candidate, then we decrement the count.
+Keep doing this each time you see an element that is not your current candidate. Once your count reaches 0, then maybe our current candidate cannot be the 
+majority element, cause up to this point we have seen the candidate as many times as we have seen other elements.
+
+However, keep going and don't give up on your candidate yet. then you can maybe hit -1, which says that your current candidate appears less than half of 
+the time in the first few (depends on how many iterations you've done.) elements of the array because its count is -1. Here you can switch the candidate that 
+you have as your potential majority element to the element you're looking at.
+
+continue the process. near the end of the array, your new candidate might hit a count of 0 again, and be swapped out by the next element(maybe the same one 
+as before.)
+
+https://www.youtube.com/watch?v=7pnhv842keE

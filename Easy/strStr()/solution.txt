@@ -1,0 +1,15 @@
+The problem: find the index of the first occurence of a substring inside a string
+
+We assume that neither the needle or the haystack are empty strings.
+My solution is brute force, and the performance is not great. Small optimizations can be done to it to improve the quality.
+
+For example instead of two nested loops, we have one for loop and this if statement inside: if haystack[i:i+len(needle)]==needle
+
+Otherwise the running time stays the same => O(n^2) (technically O(n*m))
+and it uses O(1) memory (although if you use the neetcode solution, python creates extra memory space for the if statement)
+
+the optimized solution has the following runtime: O(n+m), but has a space complexity of O(m), and it uses the KMP algorithm:
+Knuth-Morris-Pratt algorithm: https://youtu.be/JoF0Z7nVSrA 
+
+https://www.youtube.com/watch?v=Gjkhm1gYIMw
+

@@ -1,0 +1,17 @@
+This file contains a list of popular algorithms that are used to solve and/or optimize the solutions for problems.
+
+- Knuth-Morris-Pratt (KMP)
+- Boyer-Moore 
+- Dijkstra
+- Prim's algorithm
+- Kruskal algorithm
+- Bellman-Ford algorithm
+- Fast Fourier Transform
+- Binary search (along with the other search algorithms)
+- mergeSort, quickSort, and the other sort algorithms
+- Divide and conquer
+- Dynamic Programming
+- recursion (not an algorithm, but important to know, along with advanded recursive techniques: tail-recursion, Continutation Passing style, etc.)
+
+
+Review class notes, we talked a lot about these.

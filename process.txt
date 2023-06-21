@@ -10,3 +10,5 @@ It's important to think about the problem first before starting to write code.
 
 => during interviews, your time is limited, don't try to come up with the optimal solution in one shot. First just have a working solution, and then if you have time
     optimize it.
+
+=> On VSCode, don't use the debugger. Most times you won't have access to a debugger during an interview.
