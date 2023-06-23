@@ -1,0 +1,16 @@
+time and space complexity are both O(n), just O(n) and not O(n+m) since both words should have the same length.
+
+python feature you could use. instead of checking if the key exists using an if statement, you can use the get method fo dictionaries:
+dict1.get(key,0)
+
+get will try to get the value of `key`, but if it doesn't exist, it will initialize it to 0.
+example: dict1[key] = 1 + dict1.get(key,0)
+
+Solution with O(1) memory:
+sort the two strings, and then just check if the sorted strings are equal.
+However, sorting will increase the time complexity. the most efficient algorithms have a runtime of O(nlogn), which is bigger than the previous O(n). Not to 
+mention that the sorting itself could use extra memory too.
+
+Alternative solution that I thought of:
+In C, you can treat characters like integers, what if you could do that here, turn the strings into series of characters and add their values.
+If the totals aren't equal, then they're not anagrams.
