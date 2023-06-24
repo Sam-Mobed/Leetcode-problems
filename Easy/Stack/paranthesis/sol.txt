@@ -1,0 +1,6 @@
+I had the right idea, but couldn't debug it.
+I wrote my dictionary the wrong way, having opening brackets as keys, and closing ones as values, which made life more difficult.
+
+an empty list counts as a False, and a non-empty one counts as a True
+
+time complexity is O(n) and space complexity is O(1).

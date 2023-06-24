@@ -1,0 +1,5 @@
+At first I made life hard by trying to make my code fancy.
+remember that the most important thing is to first solve it. here are the priorities:
+1 - solve it
+2 - optimize it
+3 - clean it up 

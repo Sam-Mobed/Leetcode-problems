@@ -1,0 +1,7 @@
+In C, characters can be treated like integers.
+In python, we can do the same to some extent.
+character to int conversion: by using the built in ord() function
+
+It was a nice try, but words with different characters can sum up to the same thing.
+Instead I used the sorted version of each word as the keys, and the values held lists of the original words.
+Performance was ok

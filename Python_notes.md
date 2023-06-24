@@ -64,6 +64,16 @@ The correct operator for it is `**`, and not `^` (this one is bitwise XOR)
 
 ## Strings
 
+### manipulating chars
+
+In C, we can treat characters like integers, the same can be done in python to some extent. 
+character to integer: ord()
+integer to char: chr()
+```python
+char = 'a'
+charVal = ord(char)
+```
+
 ### Formatting
 
 Once common way is to use concatination to form strings. However, fstrings are more readable, easier to write and less prone to error, so use them in most cases.
