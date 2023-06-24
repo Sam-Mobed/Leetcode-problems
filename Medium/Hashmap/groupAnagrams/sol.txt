@@ -4,4 +4,21 @@ character to int conversion: by using the built in ord() function
 
 It was a nice try, but words with different characters can sum up to the same thing.
 Instead I used the sorted version of each word as the keys, and the values held lists of the original words.
-Performance was ok
+Performance was ok, the time complexity is O(m n logn), as we have to sort each string(O(nlogn)) and go through all strings(O(m)).
+space complexity is O(m) too.
+
+Optimal solution:
+instead of sorting each word, we can have dictionaries as keys. these dictionaries hold the count of each character found in the string ({'a':3,'b':2}).
+and the values are lists of the original words.
+
+Now the time complexity would be O(mn), where m is the size of the input list and n is the size of each word.
+You could also use a list, where indices 0-25 represent each of the characters, and the value themselves are the counts.
+and them you sum all of the values*indices, and store that as the key in the dictionary(thus you only use one dict in the solution.)
+(or you can just turn the list into a tuple)
+with the list, to know to which index to add a count, use the ord() function
+count = [0]*26
+count[ord(c)-ord('a')]+=1
+
+a: 80 -> 0 because 80-80
+b: 81 -> 1, because 81-80
+so on

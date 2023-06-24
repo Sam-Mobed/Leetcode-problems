@@ -1,0 +1,19 @@
+This was actually considered hard, but it was put inside medium.
+
+Multiple issues with this one, how do you choose between creating a sequence or adding to an existing one? how do you merge sequences?
+It can be done if you sort the array, or go through the dict multiple time, but all of these solutions are way past O(n) time complexity.
+
+Solution:
+
+Think of it like this, every element that is the head of a sequence is obviously the smallest in that sequence. which means that that element-1 doesn't exist
+in the input, or else it would be the head of that sequence.
+if element-1 does not exist, then element is the head of the set. if you found a head, look for element+1, if it exists, keep going until element+n doesn't exist.
+
+NOTE: for this sort of problem, it's important to visualize/write it down on paper. make a line representing natural numbers, and add the sequences to it.
+and notice how head of sequences don't have a left element, etc.
+
+my thoughts(don't work, you have to do it backwards.):
+so the first step is to turn the input list into a set. and then iterate through the set.
+look at the first element: is there element-1 in the rest of the set? if so, is there element-2? and keep going until there isn't element-n.
+and everytime you're looking, increment a counter.
+
