@@ -5,6 +5,15 @@ ctrl+shift+v to preview the file in VSCode
 
 ## General
 
+### Sets
+
+Sets are a built-in data type; Sets are collections that are unordered(so no index) and unchangeable(the items themselves, you can still add and remove stuff).
+```python
+myset = {1,2,3}
+s = set()
+s.add(1)
+```
+
 ### importing libraries
 
 When you do `from itertools import *`, you are litering your namespace with variables. just import the methods that you need.
@@ -69,7 +78,7 @@ everywhere inside the loop
 
 ### The .get(arg1,arg2) method
 
-Instead of checking whether a key exists with an if statement, use the .get() method, which will check and return the value if it exists, or initialize it will the value you pass to it as the second argument.
+Instead of checking whether a key exists with an if statement, use the .get() method, which will check and return the value if it exists, or ~~initialize it will the value you pass to it as the second argument.~~ It won't create a new key if it doesn't exist, it will just return the value of the second argument.
 ```python
 dict1.get(key1,0)
 ```

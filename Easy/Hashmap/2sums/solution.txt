@@ -1,0 +1,9 @@
+Obviously there's the bruteforce solution with a time complexity of O(n^2).
+But by using hashmaps we can make it a lot more efficient.
+
+In the hashmap, you map he index of each number to its value: {val1:index1, val2:index2,etc.}.
+You loop through the list, and do target-val. you check if the dictionary contains a key that would complete the subtraction((target-val)-key=0). If 
+the key does exist, then you return the indices of both nums in a list.
+Or you keep going until you find it later on (we are guaranteed that it exists.)
+
+With this approach, the time complexity is O(n). tradeoff is that space complexity is now O(n) bcs of the dict. 

@@ -1,0 +1,9 @@
+I misunderstood the problem initially. I thought i was supposed to end the loop when the sum hits 1 digit. but that's not always the case. a one digit numer can
+go up and then come back down to a sum of 1, which is what we want.
+
+Instead, we should be looking to see if a value repeats itself, which means we have gotten into an infinite loop, and we get out of it (and return False.)
+
+Two improvemnts:
+Instead of using a dictionary, use a set. Because you don't need values for the keys anyways.
+
+using a set/dict results in a space complexity of O(n), by using a Linked List cycle, we can use less memory.
