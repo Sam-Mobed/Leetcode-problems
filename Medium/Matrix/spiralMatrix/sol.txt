@@ -1,0 +1,144 @@
+this is my code for the problem:
+
+def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        
+        """
+        when you move down/right a col/row the value for the corresponding variable is 1
+        if you move in the opposite direction, the value is -1
+        if you are going down a column, the index for that column doesn't change, so it stays 0.
+
+        every time you hit a corner, you subtract the variable by 1. 1 -> 0 -> -1
+        
+        we cab use a circular array for this
+        """
+        
+        directions = (0,1,0,-1)
+        #these are the pointers to the above tuple
+        move_horizontal, move_vertical = 0, 1
+
+        #to keep track of what you visited, at the end we will turn this into a list and print it.
+        #it seems like the numbers inside the matrix don't repeat, so we should be fine with this technique
+        s = set()
+
+        curr_x, curr_y = 0, 0
+    
+        while True:
+            num = matrix[curr_x][curr_y]
+            if num not in s:
+                s.add(num)
+            elif len(s) == len(matrix)*len(matrix[0]):
+                break
+            
+            if curr_x + directions[move_horizontal] == len(matrix[0])-1:
+                if move_vertical==3:
+                    move_vertical = 0
+                else:
+                    move_vertical += 1
+            elif curr_y + directions[move_vertical] == len(matrix)-1:
+                if move_horizontal==3:
+                    move_horizontal = 0
+                else:
+                    move_horizontal += 1
+                
+
+            curr_x += directions[move_horizontal]
+            curr_y += directions[move_vertical]
+
+
+        return list(s)
+        """
+
+        #alternatively, every time we finish a row or a column, we decrease the following counts
+
+
+        rows_left = len(matrix)
+        cols_left = len(matrix[0]) 
+
+        s = set()
+
+        curr_row, curr_col = 0, 0
+        while rows_left!=0 and cols_left!=0:
+            while curr_row<rows_left:
+                while
+        
+        """def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        
+        """
+        when you move down/right a col/row the value for the corresponding variable is 1
+        if you move in the opposite direction, the value is -1
+        if you are going down a column, the index for that column doesn't change, so it stays 0.
+
+        every time you hit a corner, you subtract the variable by 1. 1 -> 0 -> -1
+        
+        we cab use a circular array for this
+        """
+        
+        directions = (0,1,0,-1)
+        #these are the pointers to the above tuple
+        move_horizontal, move_vertical = 0, 1
+
+        #to keep track of what you visited, at the end we will turn this into a list and print it.
+        #it seems like the numbers inside the matrix don't repeat, so we should be fine with this technique
+        s = set()
+
+        curr_x, curr_y = 0, 0
+    
+        while True:
+            num = matrix[curr_x][curr_y]
+            if num not in s:
+                s.add(num)
+            elif len(s) == len(matrix)*len(matrix[0]):
+                break
+            
+            if curr_x + directions[move_horizontal] == len(matrix[0])-1:
+                if move_vertical==3:
+                    move_vertical = 0
+                else:
+                    move_vertical += 1
+            elif curr_y + directions[move_vertical] == len(matrix)-1:
+                if move_horizontal==3:
+                    move_horizontal = 0
+                else:
+                    move_horizontal += 1
+                
+
+            curr_x += directions[move_horizontal]
+            curr_y += directions[move_vertical]
+
+
+        return list(s)
+        """
+
+        #alternatively, every time we finish a row or a column, we decrease the following counts
+
+
+        rows_left = len(matrix)
+        cols_left = len(matrix[0]) 
+
+        s = set()
+
+        curr_row, curr_col = 0, 0
+        while rows_left!=0 and cols_left!=0:
+            while curr_row<rows_left:
+                while
+        
+        """
+
+
+I do believe that the two ideas, especially the first were good, but I wasn't able to execute them properly.
+the way the solution works: you are first eliminating the outer layer, and then you move to an inner layer, and so on.
+so at first your left bound is 0, your right bound is len(matrix[0]).
+your top bound is 0, and your bottom bound is len(matrix).
+
+after each iteration, the left boundary and the top boundary are incremented, while the two others are decremented. 
+so this is the condition for the loop: left<=right and top<=bottom
+
+at the start of each iteration you start at the top left position: matrix[top][left]
+
+note that each iteration doesn't correspond to making a loop around the matrix and removing a layer, instead it is when you have 
+to change directions. for example when you finish the first row, you have to go down. this is the end of your first iteration. 
+and now you can move your top boundary down by one. 
+
+the if statement in the middle of the loop is important, as it takes care of the case where there is only one row or one column remaining.
+
+using for loops is a far better alternatives than the while loops that i was using, as it makes it far cleaner.
