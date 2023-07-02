@@ -1,0 +1,7 @@
+Made a dumb mistake, i was missing an elif statement. Otherwise it worked good.
+space complexity is good, but time complexity is not optimal.
+
+Optimal solution:
+very similar to what i did, but instead of using split to turn the path into a list of words, he adds a trailing backslash and does character by character,
+building each directory's name himself. 
+Seems to be a bit more efficient, so try writing it later.

@@ -1,0 +1,11 @@
+made a stupid mistake and wasted time, otherwise got the solution.
+
+I used .isalnum() to ignore invalid charachters.
+
+if the recruiter doesn't want you tu use isalnum() or isalpha() then just use ASCII codes.
+
+def isalphanumeric(self, c):
+    return (ord('A') <= ord(c) <= ord('Z') or
+        ord('a') <= ord(c) <= ord('z') or 
+        ord(0) <= ord(c) <= ord(9)
+    )

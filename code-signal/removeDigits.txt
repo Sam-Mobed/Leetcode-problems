@@ -1,0 +1,58 @@
+solve the following in python3: given two strings s and t, 
+both consisting of lowercase english letters and digits, calculate how many ways one digit could be 
+removed from one of the strings so that s is lexicographically smaller than t after the removal. 
+Note that we are removing only a single instance of a single instance of a single digit, rather than all instances. 
+Note that digits are considered lexicographically smaller than letters.
+
+the solution:
+def count_smaller_strings(s, t):
+    count = 0  # Initialize the count of smaller strings
+
+    for i in range(len(s)):
+        # Check if removing a digit from string s at index i makes s < t
+        if s[i].isdigit():
+            s_removed = s[:i] + s[i+1:]
+            if s_removed < t:
+                count += 1
+
+    for i in range(len(t)):
+        # Check if removing a digit from string t at index i makes s < t
+        if t[i].isdigit():
+            t_removed = t[:i] + t[i+1:]
+            if s < t_removed:
+                count += 1
+
+    return count
+
+
+# Example usage:
+s = "ab12c"
+t = "xy23z"
+
+result = count_smaller_strings(s, t)
+print("Number of ways to remove a digit:", result)
+
+
+my solution:
+
+def solution(s, t):
+    count = 0
+
+    ptr1 = 0
+    ptr2 = 0
+
+    while ptr1 < len(s) or ptr2 < len(t):
+        while ptr1 < len(s) and (not s[ptr1].isdigit()):
+            ptr1 += 1
+        while ptr2 < len(t) and (not t[ptr2].isdigit()):
+            ptr2 += 1
+
+        if ptr1 < len(s) and (s[:ptr1] + s[ptr1 + 1:]) < t:
+            count += 1
+        if ptr2 < len(t) and (t[:ptr2] + t[ptr2 + 1:]) > s:
+            count += 1
+
+        ptr1 += 1
+        ptr2 += 1
+
+    return count

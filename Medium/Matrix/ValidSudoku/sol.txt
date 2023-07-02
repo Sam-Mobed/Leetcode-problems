@@ -1,0 +1,5 @@
+I don't think there is some special technique to use for this. you just have to efficiently iterate through the sudoku board.
+you check each row, you check each column, and you check each box, but you don't do this through one million if statements. 
+
+checking the rows and columns is easy. but how would you check the 3x3 boxes? by using integer division.
+row_index//3 and col_index//3 will give the exact box to which the cooridnate belongs to. we divide by three because three is the size of each box.

@@ -1,0 +1,82 @@
+you are given an array of integers a, where each element a[i] represents the length of a ribbon. 
+Your goal is to obtain k ribbons of the same length, by cutting the ribbons into as many pieces as 
+you want. Your task is to calculate the maximum integer length L for which it is possible to obtain 
+at least k ribbons of length L by cutting the given ones.
+For example:
+a=[5,2,7,4,9] and k=5
+solution(a, k) = 4
+
+The solution:
+To solve this problem, you can use a binary search approach to find the maximum possible length L. Start with a lower bound of 1 and an upper bound of the maximum length of the ribbons in the array. Then iteratively check if it is possible to obtain at least k ribbons of length L by cutting the given ones.
+
+Here's the Python code to solve this problem:
+
+```python
+def solution(a, k):
+    lower_bound = 1
+    upper_bound = max(a)
+    result = 0
+
+    while lower_bound <= upper_bound:
+        mid = (lower_bound + upper_bound) // 2
+        count = 0
+
+        for ribbon in a:
+            count += ribbon // mid
+
+        if count >= k:
+            result = max(result, mid)
+            lower_bound = mid + 1
+        else:
+            upper_bound = mid - 1
+
+    return result
+```
+
+Let's test the provided example:
+
+```python
+a = [5, 2, 7, 4, 9]
+k = 5
+print(solution(a, k))
+```
+
+Output:
+```
+4
+```
+
+In this example, the array `a` contains ribbons of lengths [5, 2, 7, 4, 9], and the goal is to obtain 5 ribbons of the same length. The maximum possible length L that allows us to obtain at least k ribbons is 4. Therefore, the function returns 4 as the result.
+
+my solution (which doesn't pass all tests):
+The issue with your code lies in the way you handle the termination condition for the while loop. Currently, the termination condition is solely based on whether the count currCount is less than k. However, this condition doesn't account for the possibility of reaching the maximum possible length maxLength.
+
+def solution(a, k):
+    
+    #max length of each piece of ribbon
+    maxLength = 1
+    
+    # we start testing with length of 1
+    currLength = 1
+    
+    run=True
+    while run:
+        currCount = 0
+        for size in a:
+            if size<currLength:
+                continue
+            currCount += size//currLength
+        
+        #we went through the ribbons, and we we weren't able to get k ribbons
+        #therefore the size has gotten too big and we break out of the loop
+        if currCount<k:
+            run=False
+            break
+        
+        if currLength>maxLength:
+            maxLength=currLength
+        
+        currLength+=1
+        
+        
+    return maxLength
