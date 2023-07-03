@@ -1,0 +1,67 @@
+the solution came to me purely through muscle memory. thank god for comp302. I'm rusty with recursion.
+The solution isn't optimal at all, but it can easily be improve with CPS.
+
+In Python, `self` is a conventionally used name for the first parameter of a method in a class. It represents the instance of the class and allows you to access the attributes and methods of that instance within the method.
+
+When defining a method within a class, you need to include `self` as the first parameter explicitly. This parameter is automatically filled in when the method is called on an instance of the class.
+
+In your code, the `maxDepth` method is defined within the `Solution` class. By using `self.maxDepth`, you are correctly referencing the method within the class instance. The reason you use `self.maxDepth` instead of calling the function directly as `maxDepth(...)` is that `maxDepth` is an instance method and relies on accessing attributes and methods of the class instance (`self`).
+
+By using `self.maxDepth`, you ensure that you are calling the method on the current instance of the class and maintaining access to the class's attributes and other methods through the `self` parameter.
+
+It is important to note that when calling an instance method within the class itself, you need to include `self` explicitly as the first argument, as shown in the corrected code example I provided earlier.
+
+Note that if this method was outside of a class, and was a normal function, then you no longer need to use the `self` keyword and can call the function directly.
+
+the way i solved it was with recursive DFS. You can also solve it with BFS, where you count the number of levels in the tree:
+def maxDepth(self, root: TreeNode) -> int:
+    if not root:
+        return 0
+
+    level=0
+    q = deque([root]) #this is a data structure in python
+    #deque stands for double ended queue, and is provided from the collections module.
+    #it allows efficient insertion and deletion operations at both ends, and can be used as a queue
+
+    while q:
+        for i in range(len(q)):
+        node = q.popleft()
+        if node.left:
+            q.append(node.left)
+        if node.right:
+            q.append(node.right)
+        
+        level += 1
+    
+    return level
+
+there is also iterative DFS:
+here we're going to emulate the stack that is the recursive call stack. the solution does pre-order DFS, which is easier to implement.
+the stack also keeps track of the depth of the level in which the node resides.
+
+def maxDepth(self, root: TreeNode) -> int:
+
+    stack = [[root, 1]]
+    maxdepth = 0 #supposedly we don't need to check the base case where the tree is empty
+
+    while stack:
+        node, depth = stack.pop()
+
+        if node:
+            #stack.extend([node.left, node.right]) #in this line we might add null nodes, but it's not an issue
+            #note that we used extend here and not append, append takes a single element and adds it to the end of the list.
+            #if the element is an iterable, it is added as a single element. the extend method, takes an iterable (list, tuple, string) and adds its elements
+            #individually to the end of the list. so each element of the iterable is extracted and added as an individual element.
+            #he made a mistake we are supposed to use append not extend
+
+            maxdepth = max(maxdepth, depth)
+            stack.append([node.left, depth+1])
+            stack.append([node.right, depth+1])
+    
+    return maxdepth
+
+
+
+
+
+

@@ -1,0 +1,6 @@
+time complexity is O(p+q) because we might have to traverse both trees in their entireties.
+
+at first my solution has an inner function. made things little more complicated than they needed to be, because I also created a list 
+for each tree and compared the lists, which is unnecessary.
+
+the solution doesn't use inner function or lists.

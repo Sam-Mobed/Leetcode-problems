@@ -1,0 +1,1 @@
+I have the pleasure to announce that I got the solution first shot, the memory usage beats 96% but runtime only beats 44%.
