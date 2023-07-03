@@ -1,0 +1,3 @@
+I solved this one too with a very efficient solution too (memory and time wise).
+
+the solution actually uses an inner function that runs dfs. the logic is pretty much the same, but his code is cleaner than mine.
