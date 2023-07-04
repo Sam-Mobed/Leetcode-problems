@@ -56,5 +56,11 @@ def spiralOrder(matrix):
         return list(s)
 
 
-matrix = [[1,2,3],[4,5,6],[7,8,9]]
-spiralOrder(matrix)
+#matrix = [[1,2,3],[4,5,6],[7,8,9]]
+#piralOrder(matrix)
+
+matrix = [[1,2,3,7],[4,5,6],[7,8]]
+print(max(matrix, key=len))
+
+for k in range(7):
+    print(k)

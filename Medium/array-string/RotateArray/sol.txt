@@ -1,0 +1,2 @@
+the solution i got does in a more python way than the official solution (and honestly mine is more readable too.)
+you have to make sure you are using modulus so that k's that are bigger than the size of the array get normalized.

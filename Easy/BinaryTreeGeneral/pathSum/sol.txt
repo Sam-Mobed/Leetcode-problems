@@ -1,0 +1,4 @@
+my code was pretty much the exact same thing as the solution, but because of some black magic it would get an AttributeError because of a NoneType
+that was somehow passed to it. even though inside the original code i made sure to check if we have reached a leaf.
+
+i caught another bug tho, i would do the addition too late.
