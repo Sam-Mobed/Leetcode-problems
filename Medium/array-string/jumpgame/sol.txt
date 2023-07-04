@@ -1,0 +1,18 @@
+at first, i misunderstood the question, then i tried implementing the greedy solution, but it doesn't work. My implementation was faulty.
+
+there are three ways to solve this problem: brute force, DP and greedy.
+
+With brute force, you check every possible jump you can make, the runtime of this is n^n. if you cache the brute force solution you can actually 
+use O(n^2) time complexity, but you need some extra memory for that. how would you cache this: by creating an array that keeps track of the outcome of 
+reaching each index. say you reach index 3. when you get there, the value of nums[3] is 0, so you can't make any jumps.
+so we would have cache[3]=false, and every other way we reach index 3, we can consult the cache and see that it won't lead us to the last index of the
+array, and it would be pointless to continue down that path.
+
+the greedy solution has a time complexity of O(n). the greedy approach has a different way of thinking. instead of starting at index 0, and trying to 
+reach the last index, we start at the second to last index (nums[-2]). and we check if it's possible to reach the last index from nums[-2].
+
+if it is, then we move our goal: we know we can reach nums[-1], but can we reach nums[-2]? so now we would have to look at nums[-3]. and then you
+continue until you reach nums[0].
+
+With the greedy solution, you need to have a decision tree or a cache, plus it takes linear time.
+
