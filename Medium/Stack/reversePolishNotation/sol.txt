@@ -1,0 +1,4 @@
+I solved it myself, fairly intuitive, you just have to notice that you have to append the result back into the stack and use it later.
+
+the only issue was with the division. // the round division didn't work here. it always rounded down, but if the number was negative, it would 
+keep rounding down and not towards zero, so instead i had to use int(num1/num2).

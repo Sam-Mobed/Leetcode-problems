@@ -1,0 +1,29 @@
+at first i just made a set and added every value to it, and if a value is repeated i would return True. but the issue is (and i was aware)
+that a value could be repeated. 
+
+my second solution i turned every val of self.val into a string, so if i came across a val twice, it would already be turned into a string.
+this isn't great because i am sure that you can do this much more efficiently.
+
+turns out the normal solution also uses a hashset, but adds the node itself(the reference) inside the hashset and not the value.
+thought of this but i thought there would be a better solution. with this, the algorithm has a better runtime but uses much more memory as you're using
+a set.
+
+and there is a better algorithm, and it is used to have O(n) time complexity but O(1) space complexity called Floyd's Tortoise and Hare.
+here you would have two pointers, a slow one and a fast one. one is incremented only once: node.next, while the other one is iterated twice: node.next.next
+the logic is that if the linked list is a cycle, at some point the fast pointer will point to the slow pointer, and we will notice it.
+
+we are guaranteed that the fast pointer will catch up to the slow pointer, and it will happen in linear time O(N).
+think of it like this. there is a distance between the slow pointer and the fast pointer. let's say it's 10. we will always close this gap.
+because at each iteration:
+slow pointer adds to distance: 10+1=11
+fast pointer removes from distance: 11-2=9
+
+and the maximum size of this gap can be the size of the linked list.
+so slow pointer would be at 0.
+fast pointer would be at 1.
+the distance to close would be n-1.
+after the first iteration:
+slow pointer adds distance: n-1+1=n 
+but fast pointer removes more: n-2
+
+and so on until we hit 0. (if there is a cycle)
