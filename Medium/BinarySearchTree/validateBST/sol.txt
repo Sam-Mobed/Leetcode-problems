@@ -1,0 +1,12 @@
+the problem with my solution is that it checks the node and its children, but it doesnt check the value of
+the node and its grandchildren, or great-grandchildren.
+
+one potential solution is to use brute force, compare root, with every single descendant. and then compare left child with every one of its descendants,
+and so on.
+The time complexity for this is O(n^2), which is horrible.
+
+the solution creates upper and lower boundaries for each node.
+for example, the root would be between -inf and +inf.
+but the left child would be between -inf and 5 (assuming the root.val==5)
+and the right child would be between 5 and +inf.
+and so on. 
