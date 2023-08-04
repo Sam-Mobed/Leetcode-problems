@@ -1,0 +1,19 @@
+Well you could do brute force, which is to compare every two nodes, but this would have a time complexity of n^2, as you have to go over the tree twice.
+
+This isn't what i did. i took advantage of the binary search tree property, but i did one mistake. i also compared the value of the children, 
+but this isn't useful, as the difference of the values of the children cannot be larger than the difference between the parent and the children.
+parent= 4
+children = 3,5
+
+parent= 4
+children = 4,5
+
+and so on.
+
+But there is a simple problem with my solution. i go through the subtree whose root's value is closer to the original root. but the issue is that one of the first children
+may at first have a closer value to root, but then inside the subtree the other values dont make a smaller absolute difference. whereas the other subtree may at first have
+a bigger value, but inside it there might be a node that would create a smaller absolute difference. but with my original approach this node would be missed.
+
+the solution also only checks adjacent nodes. it uses in order traversal. it keeps track of the previous node that was visited.
+and it actually goes through the entire tree instead of skipping a subtree
+the time complexity is O(n) because you go through the tree once.

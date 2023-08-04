@@ -1,0 +1,22 @@
+My first solution is very straightforward, all i do is create a list, do a DFS, add the values of every single node to the list,
+and then sort the list, and finally return nodes[k-1] (since the kth smallest value is 1-indexed for some reason).
+
+but this problem has issues. first off, the space complexity is O(n), as you need a list that matches the size of the tree (and maybe a little more than
+O(n) depending on the sort algorithm).
+then the time complexity, first you have O(n) to go through the entire tree (which is necessary). Then you also have to sort the array, which can be O(nlogn)
+for the most optimized algorithms (if im not mistaken), so the overall runtime is O(nlogn).
+
+My solution doesnt leverage the properties of BST's.
+
+Solution:
+first fix to the problem is that you dont need to to sort the array. if you traverse the tree with inorder traversal (left child,node, then right child), everything is 
+already sorted.
+which means that you also dont even need an array, as you can simply keep a counter, and if the counter reaches k you are done.
+
+the solution does it iteravely by emulating the stack calls in a list. every time you go to a node, you add it to the the stack(list).
+and once you hit a leaf that is None, you have to go back up in your stack, so you pop the last element, and visit it.
+every time you visit a node, decrement k and keep going. keep going until you hit k==1, which means that you have found your element.
+remember, with trees passing through a node is NOT the same as visiting it. 
+
+the issue with the recursive function is that once you find the value that you are looking for, the return keyword will only get you out of the current call, and 
+you still remain in the call stack, and go through the rest of the tree, which isnt necessary. you need to have some sort of mechanism to exit the entire call stack.
