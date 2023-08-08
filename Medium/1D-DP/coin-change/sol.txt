@@ -1,0 +1,20 @@
+I tried the greedy algorithm for the coin change problem, as i was almost certain that it would yield the correct result. 
+turns out that greedy does not always produce the correct optimal solution, (or at least a number of coins, my solution outputs -1 at times where it maybe shouldnt).
+
+i do wonder if you can take the house robber approach. where at each step you calculate the minimum number of coins, but you also have to keep track of the total
+of your selected coins.
+
+i had the correct intuition of trying to solve it bottom up, meaning i start from a total of 0, and check the minimum amount of coins for each iteration (0,1,2,3). and go from there.
+DP[0]=0
+DP[1]=1
+DP[2]=2
+
+inside the code, you have an array to cache your results. initialize to the length of amount+1, since we go from 0 to amount inside the list. and the value for each index,
+you can just store infinity: float('inf'), since well be getting the minimums after.
+
+this solution isnt as elegant as i thought it would be, but still. for each amount between 1 to total, you have the array that has a size of total+1. and inside each index 
+is a value that represents the minimum coins needed to reach that value.
+inside the loop, we iterate over the amounts 0,...,total, and for each amt we consult the dp array: dp[a] = min(dp[a], 1 + dp[a-c]).
+since at first the value was initialized to infinity, you are guaranteed that it will be substitued. and since 
+dp[a-c] contains the minimum amount of coins to reach a-c, you are good too,
+the 1 comes from the current coin that we are using.

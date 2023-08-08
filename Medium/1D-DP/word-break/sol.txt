@@ -1,0 +1,38 @@
+i found the brute force approach, but the time complexity is n^n. 
+when you are in an interview or an OA. get a solution that works first, then worry about optimizing.
+
+
+the solution discusses multiple ways to solve this:
+going character by character. so say s='leetcode'
+we would check if 'l' is a word in our dict. then we would check 'le' and so on. as you can guess this is really bad, as
+the runtime is n*n.
+
+alternative is to do what i did, to check every word inside the the wordDict, and see if it can be found inside s.
+in my solution, i didnt consider the possibility of choosing the wrong word, and having to go back.
+
+you dont have to go back for this problem. the issue is just that you cant remove sections of the original word every time you
+find one of the words in it. because what happens is that you might find a word, and then remove it, but it wasnt the right word to pick.
+it was inside s, but picking it cucks you for the remaining letters inside of s, so you return false when you should be return true.
+
+what the solution does is that it works its way backwards. it starts at the base case, which is not the last letter, but
+the index after it. the base case represents an empty string, and its value is True.
+
+then you move on to the last letter. is there a word inside the dictionary that matches that single letter. 
+to avoid exceptions, you also have to check the length of the word vs the length of the portion of s to which its being compared, to not go out of bounds.
+
+then you move on to the other indices, until you reach index=0. remember that each step, you are not just comparing the word to the
+portion of s that has the size of the word, you also want to know if you can reach the end of the string.
+
+so if you have leetcode, with [leet,co,code] and you are at index=4.
+you are looking at C. from here you have two words inside the dict that you can use.either co, or code.
+if you choose co, you cant reach the end of the string. perhaps if there also the word 'de' you would be good, as the 
+dp cache would say True for dp[6] (dp[index+2], index=4, and len(co)=2).
+on the other hand, if you choose code, you get to index=8, which is our base case, and we set it to true. so this means that
+you have reached the end of the string s, and you can set true to dp[4] (you can reach the end of the string from that position)
+
+and then you would reach index=0, the letter l. you have leet as one of the words, so you choose it, and it brings you to the fourth index,
+that we just saw. and we know that we can reach the end of the string from the fourth index, as we set it to true inside our dp list.
+so you can also set true to dp[0], and return dp[0].
+
+instead of leet, you could have gotten le, or leetco. but those would have brought you to index 2, and then index=6.
+but inside our dp list, we stored False for those indices, as we know that we cant reach the end of the string from there.
