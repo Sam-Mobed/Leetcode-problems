@@ -1,0 +1,28 @@
+this problem goes to show that not all dynamic programming problems should be solved with
+tables. it also goes to show that not all DP problems should be solved with recursion.
+I tried doing it with recursion, but it gets messy and complicated very fast.
+
+The solution has 5 lines of code, and uses a single for loop, no recursion or tables.
+the logic is simple, if you select a house, you cant pick the two that are next two it (the one before or the one after).
+
+the problem is that reading the code isnt intuitive. 
+say you have the following array 1,2,3,1
+
+when you're at the first index, you can only rob the first house, so the profit that you make is 1.
+once you get to the second house, you can either choose to rob the first house, or rob the second. you choose the maximum
+and rob the second house, making the max profit 2 up until 1,2.
+then you get to the third house. should you choose it? you add its value to the maximum profit at index 0 (not index 1, since
+its adjacent.). if their sum is bigger than the total profit up until index 1, then we choose it.
+in this case 3+1 is bigger than 2, so we say that the maximum profit is 4 at the third index.
+again, we have this array: 1,2,3,1
+and this dictionary: 1,2,4,- up to this point, representing the maximum at every iteration.
+
+you move on to the last index, and check if the sum of its value with the max sum at the avant-dernier index is bigger, or is the max
+at index 2 bigger. in this case, 4 is bigger than 1+2, so we dont rob the last house.
+the final dictionary of the max amount you could make at every step is 1,2,4,4
+if you were to have a dictionary for this, we would have a space complexity of O(n), but the solution has a space complexity of O(1)
+
+the logic of the solution is that at each step, you only need to consider the max of the last two indices.
+rob1, rob2 = 0,0 obviously you start at 0 since you havent started checking the houses yet.
+after each iteration, rob1 represents the maximum that you could achieve if you selected to not rob the current house,
+and rob2 represents the maximum amount if you decided to rob the current house.

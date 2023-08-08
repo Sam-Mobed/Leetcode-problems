@@ -1,0 +1,10 @@
+almost got the solution one shot, but i had some issues with my code.
+i didn't consider the case that n could go below 0. for example if n=2,
+then we would recursively into n=1 and n=0. n=1 has a value inside the table of 1,
+but 0 didnt have anything.
+so i shouldve either added 0:0 to the dictionary or added an if statement for it.
+
+also after table[n] += dp(n-1,table) + dp(n-2,table), i forgot to return the
+value of table[n] which would just cause table[n] += None + 1
+
+solution is pretty much the same but he uses a loop instead of recursion.
