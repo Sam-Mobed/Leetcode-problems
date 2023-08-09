@@ -1,0 +1,10 @@
+i passed 42/44 tests. the logic was good. i used DFS, but the brute force version and without cache. i didnt know what there is to cache as there is no clear pattern.
+the numbers arent sorted or anything. and you cant just take the neighbor that has the smallest value, because you might skip even smaller values further down in the levels.
+
+The solution:
+start from the bottom. the min path for each leaf is its own value, then you move one level up. each parent will look at its children, and choose the min sum of it's value
+and the value of the children. then you have the minimum path for the subtree of three nodes. 
+you keep moving up levels, until you reach the root, and you will have calculated the minimum path for both subtrees up to that point.
+the memory complexity is roughly O(N) n=number of rows, and the time complexity is roughly O(n^2), which is approximately the number of elements in the tree.
+
+at each iteration, you only need to check the row below. our base case is the nil leaves, which have a value of 0.
