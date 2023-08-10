@@ -2,18 +2,25 @@
 Just to test stuff.
 """
 
-def climbStairs(n: int) -> int:
-        table={key: 0 for key in range(1, n+1)} #initialize the table
-        table[1]=1
-        def dp(n,table):
-            if n==0:
-                return 1
-            elif table[n]!=0:
-                return table[n]
-            else:
-                table[n] += dp(n-1,table) + dp(n-2,table)
+def findKthLargest( nums, k: int) -> int:
         
-        dp(n,table)
-        return table[n]
+        heap = []
 
-climbStairs(3)
+        def heapify(h,index):
+            if (2*index)+1<len(heap) and h[index]<h[(2*index)+1]:
+                h[index], h[(2*index)+1] = h[(2*index)+1], h[index]
+                heapify(h,(2*index)+1)
+            if (2*index)+2<len(heap) and h[index]<h[(2*index)+2]:
+                h[index], h[(2*index)+2] = h[(2*index)+2], h[index]
+                heapify(h,(2*index)+2)
+
+        for n in nums:
+            heap.append(n)
+            heapify(heap,0)
+        
+        for i in range(k):
+            x = heap.pop()
+
+        return x
+
+findKthLargest([3,2,1,5,6,4],2)

@@ -1,0 +1,11 @@
+such a straightforward question, when i wanted to solve this it would have a bunch of if statements, turning the thing ugly.
+
+the solution employs some tricks that make the solution simpler.
+
+first it reverses both strings, something that i forgot to do.
+we know that the lengths wont necessarily be equal, so he goes for the one that is the longest.
+the solution also works with integers, whereas i was using strings to represent the binaries.
+
+he transforms each character into a digit as well, by using the ascii values of each character (the difference of the ascii values, actually.)
+
+then he uses mod2 to keep the result between 1 and 0.

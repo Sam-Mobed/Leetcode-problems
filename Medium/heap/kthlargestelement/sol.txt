@@ -1,0 +1,30 @@
+im assuming that we are dealing with binary heaps here.
+
+the solution: 
+take the array and heapify it, this operation takes O(n) time. you will have a maxheap, and then you will have to pop from it k time to get the element that you are looking
+for. popping from the heaping has a time-xomplexity of O(logn) since you have to sort it.you pop k times so: klogn + n (n being the time to make the heap.)
+
+alternatively, you can use the algorithm of quick select, this will give you an average time of O(n), but worse case will be O(n^2).
+
+Quick sort: you cut the array in two, every value in the left part will be smaller than every value in the right part.  You pick a random element from the array,
+and this will be your pivot; you will divide the array based on this pivot.
+
+now that you have your pivot, go back to the start of the array, and have a pointer that tracks the indices of the array. every time you find an element that is smaller
+than the pivot, you add it to the place where the pointer is pointing to, and you increment the pointer. if you come across a value that is bigger than the pivot,
+you dont increment the pointer, and you look at the next value.
+
+once this is done, all the elements before the pointer will be smaller than the pivot, and all the elements after the pivot will be bigger than the pivot.
+
+now you will select a new pivot: the value that is at the location where the pointer was. now swap the two values.
+assuming that our initial pivot was the last element of the array, it will now be in the middle.
+
+we want the kth largest element inside this array, and we know that it is somewhere inside the second part of the array that we have created. but we dont know where,
+as the second part is not sorted.
+
+if the k value was really big, then the value that we would be looking for would be on the left side of the array. 
+if we look inside the array, and the kth biggest value is at the spot where our pointer is located, then we have found what we are looking for.
+
+this algorithm is actually not 'quicksort', but a sub-algorithm that derives from the same logic called 'quickSelect'. with 'quickSelect' you wont be sorting
+the array, only some parts of it.
+
+the runtime and memory that you use is quite bad on leetode, as again, the worse running time is O(n^2) and the judge makes sure to test it.
