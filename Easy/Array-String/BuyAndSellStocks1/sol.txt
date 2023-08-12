@@ -1,0 +1,6 @@
+this problem is my kryptonite. for some reason i can pass the majority of the test cases but i mess up the corner cases.
+
+overcomplicated the solution. all you need is left pointer and right pointer.
+left pointer starts at 0, and right pointer start at i=1
+at each iteration the right pointer is incremented, and at each iteration the difference between prices[right]-prices[left] is calculated.
+if the right pointer comes across an index where the value is less than the one the left pointer was point to, then left pointer goes there too.

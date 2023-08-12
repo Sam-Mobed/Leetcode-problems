@@ -2,25 +2,20 @@
 Just to test stuff.
 """
 
-def findKthLargest( nums, k: int) -> int:
-        
-        heap = []
+def maxProfit(prices) -> int:
 
-        def heapify(h,index):
-            if (2*index)+1<len(heap) and h[index]<h[(2*index)+1]:
-                h[index], h[(2*index)+1] = h[(2*index)+1], h[index]
-                heapify(h,(2*index)+1)
-            if (2*index)+2<len(heap) and h[index]<h[(2*index)+2]:
-                h[index], h[(2*index)+2] = h[(2*index)+2], h[index]
-                heapify(h,(2*index)+2)
+    buy=0
+    sell=0
+    gain = prices[sell]-prices[buy]
 
-        for n in nums:
-            heap.append(n)
-            heapify(heap,0)
-        
-        for i in range(k):
-            x = heap.pop()
+    for i in range(len(prices)):
+        if prices[i]<prices[buy] and prices[sell]-prices[i]<=gain:
+            buy=i
+            sell=i
+        elif prices[i]>prices[sell]:
+            sell=i
+        gain=prices[sell]-prices[buy]
 
-        return x
+    return gain
 
-findKthLargest([3,2,1,5,6,4],2)
+maxProfit([2,1,2,1,0,1,2])
