@@ -1,0 +1,7 @@
+first attempt was having two pointers, one at 0, and one at 1, and calculating the volume until the second pointer reaches the end.
+i would incremenet the first pointer everytime that the second pointer would have a bigger height. obviously this logic doesnt make sense.
+
+then i tried the brute force approach, which works but i exceeded the time limit.
+
+finally, i put one pointer at 0, and one at len(height)-1
+at each iteration, i would calculate the volume of the water, and i would incremenet/decrement the pointer that is pointing to the shortest height.

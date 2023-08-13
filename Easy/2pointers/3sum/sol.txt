@@ -1,0 +1,49 @@
+def threeSum(self, nums: List[int]) -> List[List[int]]:
+        triplets=[]
+        nums.sort()
+        left,right=0,len(nums)-1
+
+        while True:
+            if left==right:
+                break
+            for i in range(left+1,right):
+                s = nums[left]+nums[i]+nums[right]
+                if s==0 and ([nums[left],nums[i],nums[right]] not in triplets):
+                    triplets.append([nums[left],nums[i],nums[right]])
+            
+            if abs(nums[left])>nums[right]:
+                left+=1
+            else:
+                right-=1
+
+        return triplets
+
+the above code is my first solution.
+the logic is to sort the array, have a pointer at the beginning and one at the end.
+these two pointers define our boundaries.
+and we would have a third pointer inside these boundaries that checks the sum between leftboundary+middlePointer+rightboundary
+
+the way we move the boundaries:if the absolute value of the value of the left pointer is bigger than the one on the right, then we increment the left pointer
+otherwise we increment the right pointer.
+
+i passed 82/312 test cases, so not bad.
+
+The solution:
+sort the array like i did.
+have a loop with enumerate, accessing each index and the corresponding value.
+you check that the value that you are looking at isnt the same as the previous one. if it is, continue to next iteration.
+then you create a left and right pointer. left=index+1 right=len(nums)-1
+you calculate the sum: nums[index]+nums[left]+nums[right]
+if the sum is bigger than 0, then we decrement the right pointer. if it is smaller than 0 then we incremenet the left pointer.
+otherwise we append the triplet to the solution,
+increment the left pointer once, then keep incrementing it as long as nums[l]==nums[l-1]
+
+with this solution, you dont have to check whether the triplet is already in the solution.
+in your first iteration, you find all the possible triplets that sum to zero with nums[0].
+and since the array is sorted, you can skip all the following indices that have the same number as nums[0].
+the logic applies for nums[1] and all the consecutive indices as well.
+once you check an element once, you can skip all the other indices that have the same element (in your main loop).
+
+the logic of incrementing/decrementing pointers makes sense.
+
+how the left pointer is incremented once we find a solution is a little hazy but its fine.

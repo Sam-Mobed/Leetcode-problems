@@ -2,18 +2,23 @@
 Just to test stuff.
 """
 
-def candy(ratings) -> int:
-        
-    candies=[1]*len(ratings)
-        
-    for i in range(0,len(ratings)-1):
-        if ratings[i+1]>ratings[i] and candies[i+1]<=candies[i]:
-            candies[i+1]+=1
+def threeSum(nums):
+    triplets=[]
+    nums.sort()
+    left,right=0,len(nums)-1
 
-    for i in range(len(ratings)-1,0,-1):
-        if ratings[i-1]>ratings[i] and candies[i-1]<=candies[i]:
-            candies[i-1]+=1
+    while True:
+        if left==right:
+            break
+        if abs(nums[left])>nums[right]:
+            left+=1
+        else:
+            right-=1
+        for i in range(left+1,right):
+            s = nums[left]+nums[i]+nums[right]
+            if s==0 and ([nums[left],nums[i],nums[right]] not in triplets):
+                triplets.append([nums[left],nums[i],nums[right]])
 
-    return sum(candies)
+    return triplets
 
-candy([1,2,87,87,87,2,1])
+threeSum([0,0,0])
