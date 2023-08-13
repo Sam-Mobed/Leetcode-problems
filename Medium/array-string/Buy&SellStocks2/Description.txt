@@ -7,3 +7,6 @@ on the other hand, if the value at the right pointer is indeed larger than the o
 move left pointer to the position of right pointer, and we increment right pointer.
 
 the logic is so simple im surprised it worked.
+
+the solution is basically the same. writing arrays on papers, and iterating on paper helps come up with logic. but here drawing an actual graph is even better.
+the solution doesnt even use the two pointers, he just always compares two adjacent indices, and if the value on i is bigger than -1, then he adds it to the profit.

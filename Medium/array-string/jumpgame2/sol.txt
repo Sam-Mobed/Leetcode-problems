@@ -1,0 +1,11 @@
+there is a DP solution to this problem that is O(n^2), but the greedy solution is only O(n) and it works.
+
+the solution:
+you break down your array.
+from the first index(0), you look at ALL the indices that you can reach. these indices constitute the next level.
+from the next level, you look at all the other indices that you can reach, these constitute the third level.
+you go on until your final level contains the n-1'th index.
+
+the number of levels that you have constitute the minimum number of jumps.
+this is a sliding window problem. you also need two pointers, a left one and a right one. 
+the left one represents the beginning of a level while the right one represents the end of a leve.
