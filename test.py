@@ -2,20 +2,18 @@
 Just to test stuff.
 """
 
-def maxProfit(prices) -> int:
+def candy(ratings) -> int:
+        
+    candies=[1]*len(ratings)
+        
+    for i in range(0,len(ratings)-1):
+        if ratings[i+1]>ratings[i] and candies[i+1]<=candies[i]:
+            candies[i+1]+=1
 
-    buy=0
-    sell=0
-    gain = prices[sell]-prices[buy]
+    for i in range(len(ratings)-1,0,-1):
+        if ratings[i-1]>ratings[i] and candies[i-1]<=candies[i]:
+            candies[i-1]+=1
 
-    for i in range(len(prices)):
-        if prices[i]<prices[buy] and prices[sell]-prices[i]<=gain:
-            buy=i
-            sell=i
-        elif prices[i]>prices[sell]:
-            sell=i
-        gain=prices[sell]-prices[buy]
+    return sum(candies)
 
-    return gain
-
-maxProfit([2,1,2,1,0,1,2])
+candy([1,2,87,87,87,2,1])

@@ -1,0 +1,18 @@
+my idea was to use left and right boundaries, and track where the holes are located.
+
+there are two solutions to this problems, both O(n). but the first one requires o(n) space as well, whereas the second one uses pointers, and deosnt need extra space.
+
+The first solutions uses DP, where you create a table for the maxHeight at the left of the index, a maxHeight for the right of the index, and the minimum between the two
+input:  [0,1,2,3,4,5,6,....,1]
+maxLeft: 0,0,1,2,3,4,5....
+maxRight:6,6,6,6,....
+min(l,r):0,0,1,2,3,...
+
+you iterate through the array once to get the maxLeft at each position, then you can simply traverse it from right to left to get the maxRight.
+then you compute the minimum for each index, and trappedRain = min(l,r)-height[i] for i=0,..,n
+you can get the minimum while you're computing the maxRight.
+
+second solution:
+you have two pointers, one on i=0 and one on i=n-1.
+you also have two variables maxLeft and maxRight, keeping track of the max for each so far.
+then you shift the smaller one.(either incrementing left ptr, or decrementing right pointer.)

@@ -1,0 +1,20 @@
+my first approach was to iterate through the array once, and compare the current rating with the previous rating and the next rating.
+i would have an array with the number of candies for each rating. and then increment them based on the comparison that i made.
+
+the issue with this approach was that if the candy for the current rating gets incremented, it might violate the law for previous rating, but there is no way to
+go back and check.
+
+i guess it would be possible to add more if statements; in fact the optimal solution is probably to go through the array once, but thats not what the solution does.
+
+The solution:
+goes through the array twice, once from left to right, and then the other way. we also need two arrays to keep count of the candies for each traversal.
+from left to right: only compare the rating to the next element.
+from right to left: the opposite.
+
+inside one final loop, go through the two arrays with candy counts, and take the maximum for each index.
+
+Solution I tried:
+instead of having two arrays tracking the candies from left to right and right to left and then taking the max, i did it with only one array.
+i do traverse the array from left to right and then the opposite way. but instead of taking the maximum i do this for every index that has a neighbor with a bigger
+rating:
+candies[i+1]=candies[i]+1 or candies[i-1]=candies[i]+1
