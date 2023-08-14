@@ -1,35 +1,17 @@
-//Sliding Window
+at first i misunderstood the question, thinking that the sum NEEDS to be equal to the target. it can be greater than the target, or equal to it.
 
-Given an array of positive integers nums and a positive 
-integer target, return the minimal length of a 
-subarray whose sum is greater than or equal to target. 
-If there is no such subarray, return 0 instead.
+the solution i implemented is kinda brute force, with a time complexity of O(n^2)
 
- 
-Example 1:
+There is an observation that you can make when working on this problem: first off all values in the array are positive, which makes things simpler.
+when you first hit an index that creates a range where the sum is greater than or equal to the target, you get its length and compare it to the 
+minimum length variable. now what i did after that was to increment the left counter by one, and have right=left+1
 
-Input: target = 7, nums = [2,3,1,2,4,3]
-Output: 2
-Explanation: The subarray [4,3] has the minimal length under the problem constraint.
+but this isnt useful, because you are now looking at a subarray of the subarray whose sum you took. this small subarray is guaranteed to not reach the target, 
+so why bother with it.
 
-Example 2:
-
-Input: target = 4, nums = [1,4,4]
-Output: 1
-
-Example 3:
-
-Input: target = 11, nums = [1,1,1,1,1,1,1,1]
-Output: 0
- 
-
-Constraints:
-
-1 <= target <= 109
-1 <= nums.length <= 105
-1 <= nums[i] <= 104
- 
-
-Follow up: If you have figured out the O(n) solution, 
-try coding another solution of which the time complexity 
-is O(n log(n)).
+instead, increment the left pointer by one, and leave the right pointer as is.
+solution:
+your right pointer will be inside your main loop (for r in range(0,len(nums)))
+you keep track of a total variable, which represents the sum of all elements in your subarray.
+if your total becomes >= than the target, you check if the subarray has a smaller length than the smallest one you have found so far, and you
+incremenet the left pointer.

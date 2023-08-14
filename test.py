@@ -2,23 +2,25 @@
 Just to test stuff.
 """
 
-def threeSum(nums):
-    triplets=[]
-    nums.sort()
-    left,right=0,len(nums)-1
+def minSubArrayLen(target, nums) -> int:
+    minlen=float('inf')
 
-    while True:
-        if left==right:
-            break
-        if abs(nums[left])>nums[right]:
-            left+=1
-        else:
-            right-=1
-        for i in range(left+1,right):
-            s = nums[left]+nums[i]+nums[right]
-            if s==0 and ([nums[left],nums[i],nums[right]] not in triplets):
-                triplets.append([nums[left],nums[i],nums[right]])
+    l,r=0,1
 
-    return triplets
+    while l<len(nums):
+        s = sum(nums[l:r])
+        if s<target:
+            r+=1
+        elif s>target:
+            l+=1
+            r=l+1
+        elif s==target:
+            minlen = min(minlen,len(nums[l:r]))
+            l+=1
+            r=l+1
+    
+    if minlen==float('inf'):
+        return 0
+    return minlen
 
-threeSum([0,0,0])
+minSubArrayLen(7,[2,3,1,2,4,3])

@@ -1,0 +1,9 @@
+i tried doing it with a loop, but it didnt work. i think there is a way but the code will be messy.
+however i did the right thing of creating a dictionayr of all the digits mapped to their letters.
+
+the solution is recursive. you start at your root, you have a tree of decisions. for the first digit, you have three/four options.
+then for each of those options, you have three/four other options. and so on
+the time complexity is n*(4^n), as you have a maximum of four choices for each digit, and you have n digits.
+since the each result will also be the length of n, multiply n*(4^n)
+
+another thing i did which was unnecessary: having the keys inside the dictionary as a set. its easier to just have: 'abc, 'def','ghi', etc.
