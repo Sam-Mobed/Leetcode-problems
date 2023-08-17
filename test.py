@@ -2,25 +2,25 @@
 Just to test stuff.
 """
 
-def minSubArrayLen(target, nums) -> int:
-    minlen=float('inf')
+def combine(n: int, k: int):
 
-    l,r=0,1
+    res = []
 
-    while l<len(nums):
-        s = sum(nums[l:r])
-        if s<target:
-            r+=1
-        elif s>target:
-            l+=1
-            r=l+1
-        elif s==target:
-            minlen = min(minlen,len(nums[l:r]))
-            l+=1
-            r=l+1
+    def backtrack(num,currList):
+        if num>n:
+            res.append(currList[:])
+            return
+        if len(currList)==k:
+            res.append(currList[:])
+            backtrack(num,currList[:(k-1)])
+            return
+        backtrack(num+1,currList+[num])
     
-    if minlen==float('inf'):
-        return 0
-    return minlen
+    for i in range(1,n):
+        backtrack(i,[])
 
-minSubArrayLen(7,[2,3,1,2,4,3])
+    if n==1:
+        return [[1]]
+    return res
+
+print(combine(4,2))

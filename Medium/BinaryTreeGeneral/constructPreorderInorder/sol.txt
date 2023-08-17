@@ -1,0 +1,15 @@
+my original plan was to make a tree using the preorder array,
+then make an inorder array representing the elements of the tree,
+and compare this inorder array to the given inorder array.
+
+The solution:
+similar to a thought i had but didnt execute because i ran out of time. the first element of the preorder array is guaranteed to be the root element 
+of the tree, so we use that information. we find the value of the root element inside the inorder array, why: because all the elements to the left of that root value will
+be in the left subtree, and all the elements in the array that are to the right of the root value will be on the right subtree.
+THIS IS the main property of inorder traversal.
+
+now that you know which elements will be in the left subtree, and which elements will be in the right subtree, you go back to the preorder array, and partition it into
+two sections, one for the left subtree and one for the right subtree.
+
+then you build the tree recursively.
+

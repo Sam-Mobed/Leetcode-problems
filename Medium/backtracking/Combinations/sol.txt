@@ -1,0 +1,16 @@
+First time i tried, it was a mess. second time, the logic was fine, but the code wasn't. 
+I didn't handle the backtracking properly, and i would append an a sublist that has already been visited again.
+
+Solution:
+the height of the decision tree is k. 
+n is the base value for the decisions, so the time complexity is n^k. technically it's k*(n^k)
+all of these are hard to come up with, and they are not quite tight as upper bounds. but if you remember, in probability we saw 
+a formula for the total number of combinations where the order doesn't matter. now that's the actual tight upper bound.
+(k*n!)/((n-k)!k!)
+
+very very important note. inside the recursive function, we append the sublist to the result list when its length hits k.
+but this same sublist will be modified in future calls, so you need to make a copy of it, and not append itself to the result.
+
+the solution gives the brute force(we have no choice but to do brute force), so runtime is pretty bad.
+
+instead of having the range outside of the recursive function, the solution has it inside.
