@@ -1,0 +1,28 @@
+i couldn't code the solution, but I knew that one option would be BFS.
+
+solution:
+first option is to do BFS.
+To do BFS, a queue is needed.
+you first start with the root inside of the queue.
+while the queue isnt empty, you get the length of each level.
+for each level you start with prev_Node = none
+you iterate through the queue:
+you pop the first element (queue.popleft())
+if prev_node is not none, then we do prev_node.next = current_node
+then the prev_node = current_node
+then we check if current_node.left exists, if it does we append it to the queue
+same thing for the right child.
+
+This is interesting because this whoel time we are using a single queue, and not one for each level.
+how you iterate through a level is by taking the length of the queue at the start of the loop, 
+and for each node that you visit, you are appending the left and right child, getting all the nodes for the next level.
+
+However the BFS solution is not the most efficient. time and space complexity are both O(N)
+solution 2:
+we dont need the O(N) extra space.
+so we can get rid of the queue.
+so at each level you create a tmp/dummy node. and you do a DFS: the reason why DFS will work is that 
+at each level, tmp node will point to the leftmost element of the current level, and then we will
+check the parent to see if there is a right child. if there is, we connect the nodes.
+The logic behind this is that the upper level will already be connected, so we can just use the next
+pointers to check if there is something to connect to on the other side of hte tree.

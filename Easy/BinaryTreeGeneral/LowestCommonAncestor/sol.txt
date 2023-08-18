@@ -1,0 +1,29 @@
+my original idea, was to create a sort of queue that holds the lowest common ancestors:
+when you visit and node, you append it to this queue, if the two values are not within this subtree,
+then the value of the node is popped.
+The broad idea of the algorithm makes sense, but it was hard to implement and i ran out of time.
+
+solution:
+create a queue of visited nodes for p and q.
+0->2->5->9
+0->2->6->11
+you have two queue, and then you traverse the queue, and find the lowest common ancestor.
+here the LCA is 2
+this is the first solution, you simply recreate the two paths, and check the queues.
+time complexity is O(n) and space complexity is O(n)
+
+second solution:
+go through the tree, if p or q isn't in a subtree, that subtree returns none.
+if a subtree contains p, then it returns p,
+if a subtree contains q, then it returns q.
+the first subtree to have both p and q returned will be the LCA.
+this is because once we reach the leaf of a subtree, the call stack goes back,
+and the lowest common ancestor will be the first to have both p and q, and not any higher common ancestors.
+
+corner case: the LCA is p or q. our algorithm works in a way that once it encounters p or q,
+it stops looking for the next value, and returns with p or q. this isn't a problem, if we go down the leftsubtree and 
+there is nothing, and the rightsubtree contains p at some point, p will be returned but q wont be returned.
+so we might have a bug, but if if one of the value is returned, that means the other one is within the subtree
+of the value that is the ancestor, so we can just return the ancestor.
+
+the worst case for this algorithm is still o(n) but it uses less space and the average time is better.
