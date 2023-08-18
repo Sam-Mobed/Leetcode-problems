@@ -1,0 +1,24 @@
+This one is very similar to the other problem.
+almost solved it, but the issue is how to splice the postorder array for the next recursive step.
+
+When looking at the postorder array, you realize that the root of the tree is always the last element in the array.
+you find that element inside the inorder array, and you split the inorder array into two. now you have the left and right subtree
+for the next step. but how to cut up the postorder array?
+i realized that the element after the 'mid' variable is always the leftmost node inside of right subtree,
+right = postorder.index(inorder[mid+1])
+and if you look at the array of the postorder, postorder[right:-1] is always the right subtree.
+but then i ran into corner cases, and couldn't fix the code before time ran out.
+
+solution:
+most of my logic was correct but i missed one observation. inside the postorder array, the element before the last of the array(the one before the root)
+is always the right child of the tree.
+
+so what he does is that he builds the right subtree first, and instead of passing a copy of postorder array, he pops the last element and passes the entire (rest of)
+the array to the next recursive call.
+
+this solution is O(n^2) (he says n^2, but i say n, as you have n+n and not n*n, the operations arent nested) as you look for the index of a value, 
+and you then create a copy of the array.
+
+you can optimize the solution with hashmaps by turning the inorder array into a hashmap, and looking for a key. this will use more memory.
+as for making copies of the inorder array, you can create a helper function, that takes the lower bound(mid+1) and the upper bound(mid)
+that it is supposed to look at, and it will just look at that range instead of creating copies of the array.

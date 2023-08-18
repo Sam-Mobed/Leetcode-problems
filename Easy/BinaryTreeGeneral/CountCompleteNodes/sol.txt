@@ -1,0 +1,31 @@
+very easy question, i made it unnecessarily complicated but i still solved it.
+good that i wasnt in an interview cause holy. i saw the `Design an algorithm that runs in less than O(n) time complexity.`
+and thought that DFS wouldn't be good enough.
+did a simple dfs and got the answer.
+however i was guessing that bfs would be far better.
+
+solution:
+first solution is to do inorder,preorder or postorder traversal (DFS), which is what i did and you
+visit every node.
+time complexity is obviously o(n)
+
+the second solution:
+a property of a complete binary tree is that it has at most (2^levels)-1 nodes.
+a PERFECT binary tree, has EXACTLY (2^levels)-1 nodes.
+
+since we know that we are dealing with a complete binary tree, we know that each level is filled from
+left to right, so we can check if we are dealing with a perfect binary tree, by:
+going to the leftmost child (tree.left) until we hit none: get the height
+going to the rightmost child until we hit none: get the height
+if the two heights are equal, then we know that the tree is perfect, so just return (2^height)-1
+this way we find the solution without counting every node.
+
+
+what happens if we don't have a perfect binary tree? still check for both heights:
+if the right subtree has a smaller height, then we dont have a perfect tree. this is fine.
+go to either the left child of the right child and repeat the process. now you are trying to find
+a perfect binary tree inside the subtree.
+every time you hit a perfect tree, you return 2^levels-1.
+the base case is when there is a single node, which is a perfect tree.
+
+the time complexity: log2(N+1)
