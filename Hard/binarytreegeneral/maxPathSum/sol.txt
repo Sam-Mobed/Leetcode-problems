@@ -1,0 +1,33 @@
+my approach:
+do a  DFS, check the value of left child, do we want to include it in the sum? if yes then return its value + the total so far.
+same thing for the right child. 
+and then we get to the parent node. if we decide to include it, then it's fine. if not we have to reset the total value so far and get rid of the 
+values of the children that may have been added.
+
+my attempt:
+def maxPathSum(self, root: Optional[TreeNode]) -> int:
+    def dfs(node,total):
+        if not node:
+            return 0
+        
+        left = dfs(node.left,total)
+        right = dfs(node.right,total)
+        if total+node.val>total:
+            total=total+node.val+left+right
+            #total=total+node.val+max(left,right)
+            return total
+        else:
+            return total
+
+    return dfs(root, 0)
+
+solution:
+one misconception that i had, you either choose the left child or the right child, not both. otherwise you would split your path in two.
+one step that i did correctly was to use recursion, and solve subproblems and then combining results.
+
+for each subtree, we have to return two values, one for if we decide to split and go down a branch, and one for if we decide to include both branch.
+we then use these values at the root and decide: if root.val+(notsplitting)>(splitting_val):
+then we add the value of the root + what we got from not splitting (the max of one of the sub branches.)
+otherwie we exclude the root.val and move on.
+we also have to consider the case where we dont want to include any of the children.
+the solution is done with a global variable, but that's unnecessary, you can just return two variables.
