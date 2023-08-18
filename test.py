@@ -8,17 +8,8 @@ class TreeNode:
         self.left = left
         self.right = right
 
-def combine(inorder, postorder):
 
-    if not inorder or not postorder:
-        return None
-
-    root = TreeNode(postorder[-1])
-    mid = inorder.index(postorder[-1])
-    right = postorder.index(inorder[mid+1])
-    root.left = combine(inorder[:mid], postorder[:right])
-    root.right = combine(inorder[mid+1:], postorder[right:-1])
-
-    return root
-
-print(combine([9,3,15,20,7],[9,15,7,20,3]))
+x=['1','2','3']
+print(x)
+print(''.join(x))
+print(int(''.join(x)))

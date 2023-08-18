@@ -1,0 +1,8 @@
+the idea i had to solve it was fine, flatten left subtree, stick it between root and right subtree, and then flatten right subtree, but the executio nwas flawed.
+the problem was how to flatten one side, and connect it to the other flattened side.
+i tried doing a recursion on the main function (which doesnt return any value), but i didnt recognize that i needed an inner function, that will actually
+return the last element inside of a flattened tree, so that everything can be connected.
+
+solution:
+look at the code, nothing crazy, but it is something that needs to be well thought through.
+time complexity: O(n)

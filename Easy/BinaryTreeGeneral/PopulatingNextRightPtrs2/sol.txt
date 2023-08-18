@@ -26,3 +26,5 @@ at each level, tmp node will point to the leftmost element of the current level,
 check the parent to see if there is a right child. if there is, we connect the nodes.
 The logic behind this is that the upper level will already be connected, so we can just use the next
 pointers to check if there is something to connect to on the other side of hte tree.
+NOTE: in this approach, the parent is connecting the children. you dont visit the children, and then look
+back at the parent to see if there is something on the other subtree.
