@@ -1,0 +1,3 @@
+very straightforward, for some reason i had a bug somewhere that i couldnt find.
+instead of having a variable that is flipped at each level, notice that we only return the reverse level if the index of the res list is odd.
+otherwise exact same than other BFS problems.

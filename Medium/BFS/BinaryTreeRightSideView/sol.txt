@@ -1,0 +1,4 @@
+I have autism, didnt check corner case where the root is None. but then fixed it and passed everything.
+however the performance of my solution is quite bad. 
+i think to improve the performance, we can go from right to left inside each level, as we want the nodes from the right side view. (ran it again and got 
+something way better.its random)
