@@ -1,0 +1,14 @@
+
+
+soltuion:
+you could either use O(n) memory complexity, by havign two arrays: prefix and postfix. Or you could do the solution in O(1)
+memory complexity by doing everything inside of the same array.
+
+if you decide to use the prefix and postfix arrays:
+the prefix array: for each index i, the value is the product of all the elements from 0 to i-1
+the postfix array: for each index i, the value is the product of all the element from i+1 to the end of the array.
+finally, we iterate through the result array, and take the the values at i inside the prefix and postfix arrays and multiply them.
+this technique, we use O(n) extra space, and we do O(n) three times.
+
+without the two arrays:
+apply the same logic but store everything inside the same array

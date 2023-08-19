@@ -1,0 +1,21 @@
+how i tried to solve this problem was to create a dictionary, and then have each citation number be the key inside it. then i would iterate over the array,
+and increment the citation number if the value of the loop is bigger than it. then if d[c]==c and c>maxCitation, i would assign a new value to maxCitation.
+I'm fairly certain that this is a way to solve the problem, but i ran out of time to debug it.
+
+
+The solution:
+The most standard solution to this problem seems to be sorting the array first.
+[3,0,6,1,5] becomes [0,1,3,5,6]
+[0,1,3,5,6]
+ 5 4 3 2 1
+at index 0 we have 0 papers with at least 0 citations, at index 1 we have 4 papers with at least 1 citation, and so on.
+
+[1,3,1]
+[1,1,3]
+ 2 2 1  
+
+we would then loop through the sorted array, and if we find an index where len(citations)-index <= citations[index], we return len(citations)-index
+if we cross a value that is bigger or equal to the len(citations)-index, we return it.
+
+since we sort the array, the time complexity of this method is O(nlogn + n)
+we could use some extra space to bring down the time complexity to O(n)
