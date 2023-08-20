@@ -1,0 +1,6 @@
+solved it but there was an issue where an extra node would be created at the end of the linked list.
+
+solution:
+overall the solution is very similar.
+whereas i would check if l1 and l2 exists, the solution doesn't do that.
+it creates a dummynode, and assigns a variable called tail to it. i did it without a dummy node.

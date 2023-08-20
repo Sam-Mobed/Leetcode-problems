@@ -1,0 +1,13 @@
+i would have the first word inside of the list as the prefix, and have a pointer pointing to the end of it.
+
+then i would iterate over each string inside of strs, and check if the the character at the pointer is the same as the last character of the prefix.
+if it isn't i would decrement the pointer and reassign the prefix.
+
+the issue with this that you run into a  bunch of corner cases, making your code messsy for no reason.
+
+the better approach is to build your prefix from nothing, starting at prefix=''.
+then you have a nested loop.
+outer loop: iterating over the indices of the first word in strs.
+inner loop: iterating over each word inside of strs.
+if all the characters at the current index match, then it is appended to the prefix.
+as soon as we run out of bounds or we run into a character that doesnt match, we return the prefix and finish the function.
