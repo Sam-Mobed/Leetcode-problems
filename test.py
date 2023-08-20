@@ -9,28 +9,37 @@ class TreeNode:
         self.right = right
 
 
-def hIndex(citations) -> int:
-    d = {}
+def findSubstring(s: str, words):
 
-    h_index = 0
-    for c in citations:
-        if c==0:
-            continue
+    if len(s)==0 or (not s) or (not words):
+        return []
+    
+    count = {word:1 for word in words}
+    wordlength = len(words[0])
+    res = []
+    wordslength = len(words)*wordlength #the length of the combination we are looking for
 
-        if c not in d:
-            d[c]=1
-        else:
-            d[c]+=1
-            if d[c]==c and c>h_index:
-                h_index=c
+    #we go till len(s)-wordslength, because after that it will be impossible to find a combination of the length we want
+    #the remaining substring will be too short
+    for left in range(len(s)-wordslength):
 
-        for key in d:
-            if key>c:
-                d[key]+=1
-                if d[c]==c and c>h_index:
-                    h_index=c
+        #keep track of the words we have seen in the window
+        wordsSeen = {}
+        for right in range(len(words)):
+            #this tells us where our word will start
+            wordIndex = left+right * wordlength
+            tempword = s[wordIndex:wordIndex+wordlength]
 
-    return h_index
+            if tempword not in count:
+                break
+            wordsSeen[tempword] = wordsSeen.get(tempword,0)+1
 
-x=[3,0,6,1,5]
-hIndex(x)
+            if wordsSeen[tempword]>count[tempword]:
+                break
+
+        if wordsSeen == count:
+            res.append(left)
+    
+    return res
+
+findSubstring("wordgoodgoodgoodbestword", ["word","good","best","good"])

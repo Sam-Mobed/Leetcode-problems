@@ -1,0 +1,24 @@
+I tried iterating through the arrays, and inside each index there would be a while True loop that would check if the car can make it back to the current index.
+the logic i tried to implement is fairly simple. ran into a bug i couldn't debug and ran out of time.
+the time complexity would have been O(n^2)
+
+solution:
+this problem requires the greedy solution.
+
+One observation to make is that if sum(gas)>=sum(cost), then there is the solution, but if the sum(cost) is greater, then there is not solution and we can
+return -1.
+
+you compare each value of the cost array with its corresponding index in the gas array. you do gas-cost, and if the value is negative, you ignore that index and
+move on. these differences can be stored in an array, call it diff.
+
+once you have this diff array(you dont need to have it, you can just use zip()), you iterate over each index. you start with a total gas of 0, and you add
+the value at that index to your total. if your total goes negative, it means that you cant continue from that index, so you check the next index as your
+starting position and you reset your total gas to 0.
+
+ANOTHER IMPORTANT NOTE: once you hit the end of array, intuitevely you might think that you now have to go back to the start of the array, and add the other 
+values of the diff array. HOWEVER, this is unnecessary. Why: at the start of the algo we compared the sum(gas) to sum(cost), so we know that there is a solution.
+if you make it to the end of the array without running out of gas.
+=> we know that the solution is unique
+=> if we get to checking the values inside of diff, we know that there will be a solution.
+=>since we assume that there must be a solution, then the first positive value we cross must be the starting position. since if we ignore it, the total gas by 
+the time we reach the array will be smaller. (even if there are negative values in between, as we will have to make a loop anyway, and they will be crossed again.)

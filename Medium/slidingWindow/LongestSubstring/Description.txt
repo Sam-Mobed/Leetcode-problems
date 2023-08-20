@@ -1,30 +1,11 @@
-//Sliding Window
-
-Given a string s, find the length of the longest 
-substring without repeating characters.
+i pretty much solved the problem, had an issue on how to increment the first pointer, but once chatgpt fixed it the rest was good.
 
 
-Example 1:
-
-Input: s = "abcabcbb"
-Output: 3
-Explanation: The answer is "abc", with the length of 3.
-
-Example 2:
-
-Input: s = "bbbbb"
-Output: 1
-Explanation: The answer is "b", with the length of 1.
-
-Example 3:
-
-Input: s = "pwwkew"
-Output: 3
-Explanation: The answer is "wke", with the length of 3.
-Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
- 
-
-Constraints:
-
-0 <= s.length <= 5 * 104
-s consists of English letters, digits, symbols and spaces.
+Solution:
+two mistakes that I made, first, i would use the find method to check for if there is a character that is repeated inside the substring.
+i used find bcs i thought to myself what if the character that is repeated is in the middle of the substring. however this case is impossible.
+if a character is repeated, it will repeat the very first character of the substring. if the repeated character couldn't even be in the middle
+of the substring, it would be excluded.
+So instead of using find, you can just increment the ptr1 by one.
+as for how to check if the character is inside the substring, you can use a set to check this instead of using the find method. you would use O(n)
+memory for this solution, but it would be faster,

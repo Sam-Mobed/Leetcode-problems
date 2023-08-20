@@ -1,0 +1,17 @@
+how i tried to solve it: two pointers that go through the substring. first we get the length of a word inside of the words array. we know that all of the words
+inside the list have the same length. so we can use this property. at first the second pointer is incremented by 1. but if we come across a substring
+that is one of the words inside of the list (s[ptr1:ptr2]), we try incrementing the second pointer by the length of the word.
+foobarfoo: once we detect foo, second pointer will jump to r, and then to o at the end. but if the ptr2 makes a leap and doesn't detect a word in the list,
+it decrements the jump it took, we add the value of ptr1 to the result array, we do ptr1=ptr2 and then we start incrementing the ptr2 1 by 1 again.
+
+the logic of it is sound, but i had a bug i couldnt fix.
+The problem was how to include an index, when it's the start of the combination and when to ignore an index, when it is in the middle of the combination.
+
+One thing that comes to mind tho: i started from the beginning of the string. it would have been easier to start from the end of the string:
+as it is far easier to detect the start of a combination, and you don't need to backtrack (or rather it would be easier)
+
+solution:
+i misunderstood the problem. it's not just that one of the words has to appear inside the given string. what needs to appear is a combinations of all the strings
+inside of the words array, in any order. so 'foo' and 'bar' alone do not suffice. it has to be 'foobar' or 'barfoo'
+
+
