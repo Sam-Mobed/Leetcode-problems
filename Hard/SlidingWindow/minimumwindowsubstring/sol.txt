@@ -1,0 +1,70 @@
+i got very close to solving this, as it is quite similar to the other hard problem for sliding windows. i ran into a bunch of bugs,
+and i couldn't fix them before running out of time.
+
+my attempt:
+def minWindow(self, s: str, t: str) -> str:
+
+        if len(t)>len(s) or (not s) or (not t):
+            return ''
+
+        count = {}
+        for char in t:
+            count[char] = count.get(char,0)+1
+
+        minlen = s
+        left, right = 0, 0
+        charSeen = {}
+        while left<len(s):
+
+            while right<len(s):
+                char = s[right]
+                charSeen[char] = charSeen.get(char, 0) + 1
+
+                if len(s[left:right])>=len(t):
+                    keepGoing = False
+                    for c in count:
+                        if (c not in charSeen) or (charSeen[c]<count[c]):
+                            keepGoing = True
+                            break
+                    
+                    if not keepGoing:
+                        if len(s[left:right])<len(minlen):
+                            minlen = s[left:right]
+                        charSeen = {}
+                        break
+                        
+                            
+                right+=1
+
+            left=right-1
+            right+=1
+        
+        return minlen
+
+
+solution: 
+basically i was doing the brute force approach, having a table for the characters that we need and one for the 
+the window that we are looking at. and comparing whether each character in 't' is found enough time inside the window.
+
+as you can guess this isn't efficient, and there is a linear approach to this problem. 
+we are doing a lot of repeated work when we check to see if every single key and its value is present.
+instead of checking every single key, setup two extra values: have and need. need is a counter for the 
+counts dictionary that has the keys for the 't' string.
+'have' is a counter for the dictionary that keeps track of the characters inside of the window.
+instead of iterating through the have dictionary every time, we check if the key inside of window dict is equal to 
+the one inside of t dict. if it is, we increment the 'have' counter. and then we check if the two counters
+are equal.
+if the two counters are equal, we store the current window as the temporary result.
+and then we proceed. instead of entirely resetting the dictionary of the window, we simply remove the key corresponding
+to the first character inside of the window.
+keep in mind, every time we move the window, the first character gets incremented by one; so we remove the corresponding
+key and decrement the 'have' counter.
+
+keep in mind that we don't need to add the characters that we aren't looking for inside of the window dictionary.
+when we want to move the window, if the first character is one that we don't care about, we ignore it and move on to
+the next one until we reach a character that we care about. once we do, then we decrement the 'have' counter and 
+update the dict (by removing the key)
+
+another caveat, if for example we need to have a 'b' in our window, and we cross 'b' more times than we need, still have the
+actual number of 'b's inside of the window dict (window['b']=5). Why? because when we move the window, we can afford to remove 4 b's,
+whereas if we only had one, we would have to keep it.

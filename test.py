@@ -9,37 +9,44 @@ class TreeNode:
         self.right = right
 
 
-def findSubstring(s: str, words):
+def minWindow(s: str, t: str) -> str:
 
-    if len(s)==0 or (not s) or (not words):
-        return []
+    if len(t)>len(s) or (not s) or (not t):
+        return ''
+
+    count = {}
+    for char in t:
+        count[char] = count.get(char,0)+1
+
+    minlen = s
+    left, right = 0, 0
+    charSeen = {}
+    while left<len(s):
+
+        while right<len(s):
+            char = s[right]
+            charSeen[char] = charSeen.get(char, 0) + 1
+
+            if len(s[left:right])>=len(t):
+                keepGoing = False
+                for c in count:
+                    if (c not in charSeen) or (charSeen[c]<count[c]):
+                        keepGoing = True
+                        break
+                
+                if not keepGoing:
+                    if len(s[left:right+1])<len(minlen):
+                        minlen = s[left:right+1]
+                    charSeen = {}
+                    break
+                    
+                        
+            right+=1
+
+        left+=1
+        right+=1
     
-    count = {word:1 for word in words}
-    wordlength = len(words[0])
-    res = []
-    wordslength = len(words)*wordlength #the length of the combination we are looking for
+    return minlen
 
-    #we go till len(s)-wordslength, because after that it will be impossible to find a combination of the length we want
-    #the remaining substring will be too short
-    for left in range(len(s)-wordslength):
 
-        #keep track of the words we have seen in the window
-        wordsSeen = {}
-        for right in range(len(words)):
-            #this tells us where our word will start
-            wordIndex = left+right * wordlength
-            tempword = s[wordIndex:wordIndex+wordlength]
-
-            if tempword not in count:
-                break
-            wordsSeen[tempword] = wordsSeen.get(tempword,0)+1
-
-            if wordsSeen[tempword]>count[tempword]:
-                break
-
-        if wordsSeen == count:
-            res.append(left)
-    
-    return res
-
-findSubstring("wordgoodgoodgoodbestword", ["word","good","best","good"])
+print(minWindow("ADOBECODEBANC", "ABC"))

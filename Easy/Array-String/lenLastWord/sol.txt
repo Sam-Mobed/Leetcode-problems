@@ -1,0 +1,8 @@
+it was tempting to use the python string methods like split and strip to get rid of trailing whitespaces and to split the string into a list of words.
+but i knew that it would be inefficient. so i used a pointer that points to the end of the string. 
+inside the first while loop i decrement it until we reach the first character that isn't ' '.
+and then there is a second while loop, where i count every char until we reach the beginning of the string or a whitespace.
+
+have to make sure the ptr doenst go out of bounds.
+
+the solution: the exact same thing i did.
