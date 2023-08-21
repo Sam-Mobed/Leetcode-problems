@@ -1,0 +1,24 @@
+you can just sort it, and take arr[len(arr)//2]
+if this is good enough for the test, then just submit and move on. 
+but how to optimize?
+def findMedian(arr):
+    # Write your code here
+    arr.sort()
+    return arr[len(arr)//2]
+
+the solution:
+there is a way to find the median without sorting the entire array. it is quickselect.
+quickselect is designed to find the k'th element. 
+in our case we want to find the len(arr)//2 element.
+
+quickselect(avg case is O(n), worse case is n^2):
+- partition the array. (every value in the first half is smaller than every value in the second half)
+- just choose the last element as the pivot.
+- once the pivot is chosen, iterate through the array, and if a value is smaller, store it inside the left half, and if it is bigger store it in the right half.
+- if the value is at the right place, swap it with itself (dont move it)
+- once you are done iterating through the array, the index where the pointer is left at indicates the location of the partition. every element to the left of this pointer
+will be smaller than the pivot, and every element to the right of it will be bigger than the pivot. why? because the pointer moves when an element is smaller than the pivot,
+that's how we choose where to swap the elements. and it it has stopped, it means that past that point there is not element bigger than the pivot.
+- one last swap after an iteration: swap the pivot with whatever value happens to be at the location of the pointer.
+- once this swap has been done, all elements to the left of the new index of the old pivot will be smaller than it, and all elements to the right of it will be larger than it.
+=> here is what this means, we are looking for len(k)//2. as soon as the pointer reaches this index, and we do the swap. we have found the value (median) that we were looking for.

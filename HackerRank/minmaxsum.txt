@@ -1,0 +1,2 @@
+you just sort the array and take the first four and last four values.
+you can probably do this without sorting, but since we know that the maximum length of the array is 5, this isnt a problem.
