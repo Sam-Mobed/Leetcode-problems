@@ -1,0 +1,55 @@
+misundeerstood the problem again when i submitted my first solution. i dont take time to read the problem. i returned an integer instead of a linked list containing the 
+sum.
+
+pretty much got it solved, for some reason if there is carry it wouldn't append it to the end.
+my attempt:
+def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+
+        #we know that the two numbers are non-empty, so no need to check.
+        head = l1
+        carry = 0
+        tail1 = l1
+        tail2 = l2
+        while tail1 and tail2:
+            value = tail1.val + tail2.val + carry
+            if value>=10:
+                value = value%10
+                carry = 1 
+            else:
+                carry=0
+
+            tail1.val = value
+            tail1 = tail1.next
+            tail2 = tail2.next
+        
+        tail=None
+        if tail1:
+            tail = tail1
+        elif tail2:
+            tail = tail2
+        #this means that tail1 was longer than tail2
+        while tail:
+            value = tail.val + carry
+            if value>=10:
+                value = value%10
+                carry=1
+            else:
+                carry = 0
+            tail.val = value
+            tail = tail.next
+
+        if carry==1:
+            tail = ListNode(val=carry)
+        
+        return head
+
+        
+solution:
+the solution follows the same logic as what i did, but more elegantly.
+instad of having another loop for if one of the linked lists is shorter than the other one, we do everything inside of the same linked list:
+while l1 or l2 or carry:
+
+if one of them is null, then all we do is substitute its non existing value with a 0, and we proceed.
+
+i guess one thing that would have been better in my solution is that i didnt create any new node, and i tried having everything inside of l1.
+if the problem doesn't ask you for this sort of optimizations, dont make it complicated, the first goal is to just solve the problem.

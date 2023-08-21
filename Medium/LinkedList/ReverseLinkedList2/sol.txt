@@ -1,0 +1,1 @@
+the important part of this problem is how you setup the pointer to your current node, and how you setup the pointer to your previous node.

@@ -4,3 +4,11 @@ solution:
 overall the solution is very similar.
 whereas i would check if l1 and l2 exists, the solution doesn't do that.
 it creates a dummynode, and assigns a variable called tail to it. i did it without a dummy node.
+
+instead of creating a new node every time we want to insert a new value to the tail of our linked list. here is how the solution approaches it.
+- the only node that is create is the dummy node. and we return dummy.next, which is pointing to the true head.
+- if there is not list1 and list2, we return dummy.next, which is None.
+- if only one of them exists then the one existing is pointed to by dummy.next
+- aside dummy, the only other variable we have is the tail variable. at first it points to dummy.
+- every time we want to add an element, we add the reference of that node to tail.next:we never create a new node, as it is unnecessary.
+- after each iteration of the while loop we do tail = tail.next
