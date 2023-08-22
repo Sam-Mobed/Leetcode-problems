@@ -1,0 +1,8 @@
+you just have i=0 for the row and j=0 for the column, add everything to sum1 while i<len(arr)
+do the same with arr2, but while i>-1 and i=len(arr)-1
+
+solution:
+instead of having two loops, this can be done in a single loop:
+i1=0
+i2=len(arr)-1
+j=0

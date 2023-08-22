@@ -22,3 +22,20 @@ that's how we choose where to swap the elements. and it it has stopped, it means
 - one last swap after an iteration: swap the pivot with whatever value happens to be at the location of the pointer.
 - once this swap has been done, all elements to the left of the new index of the old pivot will be smaller than it, and all elements to the right of it will be larger than it.
 => here is what this means, we are looking for len(k)//2. as soon as the pointer reaches this index, and we do the swap. we have found the value (median) that we were looking for.
+however it might take several iterations before the proper median is swapped to its true spot, which is len(k)//2.
+then you would have to look: is len(k)//2 bigger than the current spot where the pivot has been swapped to? then look at the right partition of the array. otherwise check the left.
+
+def quickSelect(l,r);
+    pivot, ptr = nums[r], l
+
+    for i in range(l,r):
+        if nums[i]<=ptr:
+            nums[ptr], nums[i] = nums[i], nums[ptr]
+            ptr+=1
+    
+    nums[ptr], nums[r] = nums[r], nums[p]
+    if ptr>len(arr)//2: return quickSelect(l,ptr-1)
+    elif ptr<len(arr)//2: return quickSelect(p+1,r)
+    else:   return nums[ptr]
+
+quickSelect(0,len(arr))
