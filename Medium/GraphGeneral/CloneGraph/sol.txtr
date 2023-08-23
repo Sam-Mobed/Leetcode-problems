@@ -1,0 +1,18 @@
+more complicated than it looks:
+
+you need a dictionary to keep track of the mappings. mappings of: the old nodes to the new copied nodes.
+
+inside the recursive function: 
+if the node we are looking at is already in the dictionary, this means that a copy of it has been made before.
+Therefore we can just return its copy (oldtonew[node])
+
+otherwise, the copy doesnt exist yet, so:
+create a copy of the current node. 
+add it to the dictionary.
+then go over its neighbors:
+for each neighbor, run the recursive function. copy.neighbors.append(dfs(neighbor))
+each of these calls will return a copy of the neighbor, which will be appended to the neighbors list.
+
+once you are out of the loop, return the current copy of the node.
+
+outside the function, all you have to do is to call the dfs on the node once (if it isnt none.)
