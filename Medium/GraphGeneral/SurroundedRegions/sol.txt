@@ -1,0 +1,14 @@
+once again, i misunderstood the premise. i thought that they were referring to each individual '0' as a region; but no, '0's that are near each other
+constitute a single region, and not multiple regions.
+
+solution:
+one's first  approach is to go through the board, find every single region made up of '0's and then check if they can be converted to 'X's.
+
+a simpler more clever approach would be to go through the board, and return everything EXCEPT the regions that are not surrounded; this makes the problem simpler.
+as once you eliminate the slots that are not surrounded, you can easily convert them to 'X's.
+
+so how would you solve this:
+iterate over the outer layer of the board. and every time you see an '0', run a DFS/BFS on that location. turn every '0' in that region into a 'T'
+
+Once that's done, loop over the board normally. now every time you see a '0', you flip it into 'x', because that '0' is safe to be flipped. and everytime you see
+a 'T', you flip it into an '0'.

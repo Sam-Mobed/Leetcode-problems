@@ -1,0 +1,30 @@
+first check if the grid is not empty. 
+then store the number of rows and columns inside of variables.
+create a set that will contain the coordinates of the islands that have already been visited.
+have a counter for the number of islands you have seen.
+
+have a bfs function that takes in the row and the column. def bfs(r,c)
+similar to trees, when you want to do a BFS, you have to use a queue.
+declare the queue, and add the tuple of (r,c) to it
+also add (r,c) to the visited islands.
+
+while the queue is not empty:
+    instead of getting the length of the queue, which are the nodes thta we iterate over, and values inside the same
+    level, we define a list that contains all the possible directions: left,right,top and bottom 
+    and we will try to move to every one of those
+
+    popleft from the queue.
+    for each possible direction, we check if it will be inside of the grid, if the value at that location is 1,
+    and if it hasnt been visited before.
+    if these conditions are met, then we add the tuple to the queue and to the list of visited islands.
+
+
+then you have a main function, that iterates over each row and each column. if we get to a value
+that is 1 and has not been visited before, we run a BFS from that location. 
+and we also increment the counter.
+
+return the counter for islands.
+
+what's cool about this algorithm is that you can easily convert it into DFS, by using pop() instead of popleft()
+which will return the most recent node we have visited.
+    
