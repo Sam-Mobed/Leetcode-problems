@@ -1,0 +1,7 @@
+first you do binary search on the rows, check if the target is between the range of the middle row.
+if the target is smaller than the leftmost element of the row, then we check the first half of the rows.
+if the target is bigger, than we check the second half.
+
+the mistake i made that i would return row1 incase row1>row2. a habit i got from another binarysearch problem.
+when you dont find the target. always return -1 or false or somehting that indicates that it isnt there, unless the problem asks for the index
+of where it would have been.

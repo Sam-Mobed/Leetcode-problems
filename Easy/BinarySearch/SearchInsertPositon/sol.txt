@@ -1,0 +1,2 @@
+simple binary search. start with left boundary=0 and right boundary=len(nums)-1. check the middle. if the target is bigger,
+then look inside the right part of the list. if its smaller then check the left part. if we get to the point where left>right, return left.

@@ -9,24 +9,44 @@ class TreeNode:
         self.right = right
 
 
-def permute(nums):
+def searchMatrix(matrix,target) -> bool:
 
-    result = []
-
-    if len(nums)==1:
-        return [nums[:]]
+    if not matrix or not matrix[0]:
+        return False
     
-    for i in range(len(nums)):
-        n = nums.pop(0)
-        perms = permute(nums)
-
-        for perm in perms:
-            perm.append(n)
-
-        result.extend(perms)
-        nums.append(n)
     
-    return result
+
+    def findRow(row1,row2):
+        #get the mid row
+        #if the first element of the mid row is bigger, then check first of matrix
+        #if the first element of the mid row is smaller, check the second second half od the matrix
+        #this will always return the row where the target is supposed to be.
+        if row1>row2:
+            return row1
+        mid = (row1+row2)//2
+        l = matrix[mid][0]
+        r = matrix[mid][-1]
+        if l<=target<=r:
+            return mid
+        elif target<l:
+            return findRow(row1,mid-1)
+        else:
+            return findRow(mid+1,row2)
+
+    def binarySearch(l,r,row):
+        #normal binary search
+        if l>r:
+            return False
+        m = (l+r)//2
+        if matrix[row][m]>target:
+            return binarySearch(l,m-1,row)
+        elif matrix[row][m]<target:
+            return binarySearch(m+1,r,row)
+        else:
+            return True
+    
+    row = findRow(0,len(matrix)-1)
+    return binarySearch(0,len(matrix[row])-1,row)
 
 
-permute([1,2,3])
+searchMatrix([[1]],2)
