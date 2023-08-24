@@ -9,44 +9,24 @@ class TreeNode:
         self.right = right
 
 
-def minWindow(s: str, t: str) -> str:
+def permute(nums):
 
-    if len(t)>len(s) or (not s) or (not t):
-        return ''
+    result = []
 
-    count = {}
-    for char in t:
-        count[char] = count.get(char,0)+1
-
-    minlen = s
-    left, right = 0, 0
-    charSeen = {}
-    while left<len(s):
-
-        while right<len(s):
-            char = s[right]
-            charSeen[char] = charSeen.get(char, 0) + 1
-
-            if len(s[left:right])>=len(t):
-                keepGoing = False
-                for c in count:
-                    if (c not in charSeen) or (charSeen[c]<count[c]):
-                        keepGoing = True
-                        break
-                
-                if not keepGoing:
-                    if len(s[left:right+1])<len(minlen):
-                        minlen = s[left:right+1]
-                    charSeen = {}
-                    break
-                    
-                        
-            right+=1
-
-        left+=1
-        right+=1
+    if len(nums)==1:
+        return [nums[:]]
     
-    return minlen
+    for i in range(len(nums)):
+        n = nums.pop(0)
+        perms = permute(nums)
+
+        for perm in perms:
+            perm.append(n)
+
+        result.extend(perms)
+        nums.append(n)
+    
+    return result
 
 
-print(minWindow("ADOBECODEBANC", "ABC"))
+permute([1,2,3])

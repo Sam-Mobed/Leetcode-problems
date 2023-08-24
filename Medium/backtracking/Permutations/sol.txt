@@ -1,0 +1,56 @@
+my idea was to get the solution using two pointers. they both start at 0. the second was goes across the array.
+once the sublist is the same length than nums, we append it to results. 
+then we start over but ptr2 starts at i=1 instead of i=0. we do the same until the sublist reaches the same length as nums.
+
+it could work like this, but you run into a bunch of corner cases, and your code becomes really convoluted. good shot tho.
+def permute(self, nums: List[int]) -> List[List[int]]:
+
+    if len(nums)<=1:
+        return [nums]
+
+    res = []
+
+    ptr1=0
+    ptr2=0
+    while ptr1<len(nums):
+        
+
+        counter=0
+        curList=[]
+        while counter!=len(nums):
+            if ptr2==len(nums):
+                ptr2=0
+                continue
+            curList.append(nums[ptr2])
+            ptr2+=1
+            counter+=1
+        
+        res.append(curList)
+        if ptr2==len(nums)-1 and ptr1==0 or 
+        ptr1+=1
+        ptr2=ptr1
+
+    return res
+
+
+solution:
+say you have the following tree:
+
+                                [1,2,3]
+
+                            /       |
+                        /           |
+                    /               |
+                /
+            [2,3]                   [1,3]
+        /           \
+    /                   \
+[3]                     [2]
+
+
+starting at the root, you pop 1. what remains of your array is 2,3. so you repeat the same process but with
+[2,3]. then you get rid of 2, and what remains is [3]. you try again but [3] is the base case.
+then we have to go back up the tree, so we add 2 again, but this time at the end of the list: [3,2].
+and now you get rid of 3 and you have [2].
+every time you move up a branch, you append to your current list the initial value that you had removed at that point.
+so when we move back to the root, we add 1 to the each of the lists, and then add them to the result list.

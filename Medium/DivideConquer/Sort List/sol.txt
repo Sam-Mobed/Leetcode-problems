@@ -1,0 +1,28 @@
+i had the right intuition of wanting to do mergesort.but i didn't know how to do it directly
+on the linked list. instead, i wanted to put every node inside of a list, and then perform mergesort
+on that list, which adds extra complexity for no reason.
+
+solution:
+perform mergesort on the linked lsit directly.
+the difficulty comes with how you will split the list into two halves.
+our left pointer will be the head of the linked list.
+to get the right pointer, we need a helper function that finds the middle.
+but we don't want the middle element as our right pointer, instead we want the node
+that comes after the middle node. 
+so :
+right = self.getMid(head)
+tmp = right.next
+right.next = None
+right = tmp
+
+and this is how you split the linked list.
+now you have two linked lists, left and right.
+then you call the function recursively on the two linked lists.
+and once we return from the recursive function call, we will have another helper
+function that will merge the returned linked lists, by comparing the head, and putting the
+one with the smaller value at the beginning.
+
+
+the getmid helper function:
+you find the middle by having a slow and a fast pointer.
+
