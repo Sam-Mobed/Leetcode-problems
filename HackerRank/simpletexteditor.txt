@@ -1,0 +1,42 @@
+the problem said 'implement ...' so i assumed that they wanted me to straight up write a python class, which i did.
+and i think probably works well. but the way the enter input is cancer, aint nobody got time to debug.
+my attempt:
+class editor:
+    def __init__(self,content=''):
+        self.content=content
+        self.operations=[]
+    
+    def append(self,W):
+        self.operations.append(self.content)
+        self.content+=W
+    
+    def delete(self,k):
+        self.operations.append(self.content)
+        self.content = self.content[:-k]
+    
+    #may be an conflict with std print function
+    def print(self,k):
+        print(self.content[k-1])
+        
+    def undo(self):
+        if self.operations:
+            last_version = self.operations.pop()
+            self.content = last_version
+    
+
+numOperations = int(input())
+currentWord = None
+for i in range(numOperations):
+    inp = input()
+    inp = inp.split()
+    if inp[0]=='1':
+        currentWord = editor(inp[1])
+    elif inp[0]=='2':
+        currentWord.delete(int(inp[1]))
+    elif inp[0]=='3':
+        currentWord.print(int(inp[1]))
+    else:
+        currentWord.undo()
+
+i went back and made some adjustments. this could have worked.
+the solution itself is super simple. text editor is a stirng, and you keep operations inside of a queue. pop the last one and set the string to it.

@@ -1,0 +1,54 @@
+my attempt:
+i tried something very naive. i would have a set. then i would iterate over all the words: for word in words:
+then i would iterate over all the prefixes and check if word[:len(prefixes)]==prefix, and print BAD SET if it is the case.
+obviously time complexity is horrible. and it just doesnt work.
+my attempt:
+def noPrefix(words):
+    prefixes = set()
+    
+    for word in words:
+        
+        for prefix in prefixes:
+            if len(prefix)>=len(word):
+                if prefix[:len(word)]==word:
+                    print('BAD SET')
+                    print(word)
+            else:
+                if word[:len(prefix)]==prefix:
+                    print('BAD SET')
+                    print(word)
+                    return
+        
+        prefixes.add(word)
+                
+    print('GOOD SET')
+
+the solution:
+the link to the video:https://www.youtube.com/watch?v=evqAsdJ05yY
+its important to understand this.
+
+the trie dictionary simulates a trie data structure.
+you have the main trie dictionary,
+inside this dict you will find other dictionaries, which are tries themselves.
+each trie contaians letters as keys.
+each key points to a tuple: the first element is another tuple, that starts empty {}. the second element is a boolean, which indicates whether 
+i==len(word)-1          ->      have we reached the end of the word?
+
+the way this dictionary is organized is then leveraged inside the insert function.
+the insert function takes in the main trie as the first argument, and the word we are analyzing as the second argument.
+
+we loop over each character of the word.
+we check if the character is inside the trie:
+IF IT IS: 
+we check trie[char][1], the boolean that indicated whether we have reached the end of a word, or we check len(word)-1==i, if we have reached the end of the current word
+if one of the two is true, that means that two words share a prefix, so we can return True. which will then be used to print(BAD SET)
+
+IF IT ISNT:
+then we define the key for the character inside that layer of the dictionary.
+trie[char] = {}, i==len(word)-1
+
+before checking the next letter, we have to move one level down inside the trie structure.
+so we reassign trie:
+trie, _ = trie[char] #returning either the dictionary we just created, or one that existed before.
+
+we dont need the boolean inside the tuple so we assign it to _.
