@@ -22,7 +22,7 @@ def searchMatrix(matrix,target) -> bool:
         #if the first element of the mid row is smaller, check the second second half od the matrix
         #this will always return the row where the target is supposed to be.
         if row1>row2:
-            return row1
+            return -1
         mid = (row1+row2)//2
         l = matrix[mid][0]
         r = matrix[mid][-1]

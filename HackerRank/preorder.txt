@@ -1,0 +1,1 @@
+simple. print current node. then visit left child, then visit right child.

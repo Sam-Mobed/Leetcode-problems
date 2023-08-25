@@ -1,0 +1,33 @@
+my attempt:
+def decodeHuff(root, s):
+	
+    result = ''
+    
+    def decode(i,node, prev):
+        if not node or i>len(s)-1:
+            return i,prev
+        if s[i]=='0':
+            return decode(i+1,node.left,node)
+        else:
+            return decode(i+1,node.right,node)
+    
+    index=0
+    while True:
+        if index>len(s)-1:
+            break
+        NextIndex,extract = decode(index,root,root)
+        result += extract.data
+        index=NextIndex
+         
+    print(result)
+
+i almost got it. i would get an output that ressembles the expecte result. but i ran out of time and couldn't debug.
+the solution is a lot simpler than what i tried to do. you do a for loop over every character inside of the string.
+and you have a temp variable that keeps track of which node of the tree you are looking at. 
+if the char is 0, we look to the left, otherwise we check the right child.
+inside the same loop we check whether we have reached a leaf. if we have, then simply append the value of the leaf to the result string, and 
+reset temp to root.
+
+i feel like there would be more corner cases to this problem (can the tree be None? or a single node?)
+for example we should check if the tree and or the string are empty, and print ''.
+the thing with hackerrank is that there are very few test cases. as long as you pass the general stuff you're good.

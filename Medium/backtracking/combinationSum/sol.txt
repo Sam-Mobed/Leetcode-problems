@@ -1,0 +1,29 @@
+the difficult part of this problem is not repeating combinations inside the result list.
+for example if the target is 7, [2,2,3] and [2,3,2] both sum up to 7. the order is different, but they contain the same elements.
+, so we dont want to include both.
+as a first attempt we might want to do a brute force decision tree. target = 5 candidates = [1,2,3]
+                                .
+                            /   |   \
+                        /       |       \
+                        1       2       3
+                    /   |   \
+                /       |       \
+                1       2       3
+
+but if we orgnize our tree in this way, we are likely to repeat combinations. we may keep a set that contains all combinations, and sort each sublist
+and then check inside the set, but that would make our algorithm very inefficient.
+a better tree would be organized like so:
+
+                                .
+                            /       \
+                            1       []
+                        /       \
+                        1,1     1
+                    /      \
+                1,1,1       1,1
+
+for each branch, we say the left branch is allowed to have one extra 1. while the right branch is only limited to having the same amount of 1's
+as the parent.
+of course the tree is simplified. but you get the idea. this way we limit the occurences of the same candidate within subtrees.
+
+if we check that is sum is bigger than the target, we stop going down that path.
