@@ -1,0 +1,103 @@
+first attempt:
+def checkPalindrome(s):
+    badIndices = []
+    left = 0
+    right = len(s)-1
+    while left<right:
+        if s[left]!=s[right]:
+            if s[left+1]==s[right]:
+                badIndices.append(left)
+                left+=1
+            elif s[left]==s[right-1]:
+                badIndices.append(right)
+                right-=1
+        else:
+            left+=1
+            right-=1
+            
+    return badIndices if badIndices else -1
+    
+
+def palindromeIndex(s):
+    # Write your code here
+    res = checkPalindrome(s)
+    
+    if res==-1:
+        return -1
+    elif len(res)>=3:
+        return -1
+    else:
+        for i in res:
+            t = s[:i]+s[i+1:]
+            r = checkPalindrome(t)
+            if r==-1:
+                return i
+    
+    return -1
+
+i passed most test cases here, but got some time limit exceeded.
+
+second attempt:
+def checkPalindrome(s):
+    left = 0
+    right = len(s)-1
+    while left<right:
+        if s[left]!=s[right]:
+            if s[left+1]==s[right]:
+                return left
+                left+=1
+            elif s[left]==s[right-1]:
+                return right
+                right-=1
+        else:
+            left+=1
+            right-=1
+            
+    return -1
+    
+
+def palindromeIndex(s):
+    # Write your code here
+    res = checkPalindrome(s)
+    
+    if res==-1:
+        return -1
+    else:
+        
+        t = s[:res]+s[res+1:]
+        r = checkPalindrome(t)
+        if r==-1:
+            return res
+    
+    return -1
+
+instead of returning a list of bad indices, i just returned a single bad index. i passed the same number of tests
+yet i still had time limit exceeded on two of them.
+
+the solution:
+def palindromeIndex(s):
+    # Write your code here
+    if s == s[::-1]:
+        return -1
+        
+    n = len(s)
+    for i in range(n//2):
+        if s[i]!=s[n-1-i]:
+            if s[i:n-1-i] == s[i:n-1-i][::-1]:
+                return n-1-i
+            elif s[i+1:n-i] == s[i+1:n-i][::-1]:
+                return i
+    return -1
+
+so first you check if the entire thing is a palindrome.
+then you iterate through the string. but you only go throuhg have of the indices. why?
+because if i is your index, n-1-i will be the corresponding index on the other end of the string.
+
+if two corresponding chars are not equal, we check two conditions.
+- if we exclude the last character, will the substring in between the two be a palindrome?
+- if we exclude the first character, will the substring in between the two be a palindrome?
+
+this makes the substring increasingly shorter.
+ALSO: -1 means that the string is either not a palindrome, or it IS a palindrome,
+but you dont need to remove an index.
+this makes the problem a little odd, as you return -1 for both cases.
