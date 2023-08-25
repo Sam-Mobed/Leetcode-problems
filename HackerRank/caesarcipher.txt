@@ -1,0 +1,23 @@
+straightforward,i guess the hardest part would be how to calculate the new index of the shifted character,
+which i figured out.
+
+def caesarCipher(s, k):
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    result = ''
+
+    for c in s:
+        if c.isalpha():
+            is_upper = c.isupper()
+            t = c.lower()  # Convert to lowercase for indexing in the alphabet
+            new_index = (alphabet.find(t) + k) % len(alphabet)
+
+            if is_upper:
+                new_char = alphabet[new_index].upper()
+            else:
+                new_char = alphabet[new_index]
+
+            result += new_char
+        else:
+            result += c
+
+    return result

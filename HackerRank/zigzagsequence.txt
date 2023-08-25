@@ -1,0 +1,4 @@
+debug the code,it was already written.
+-first it didnt calculate the middle index correctly.
+-after swapping middle and last element, (last element being n-1), it forgot to decrement the last pointer to n-2
+- inside the loop, it would increment both pointers, instead of incrementing one and decrementing the other.
