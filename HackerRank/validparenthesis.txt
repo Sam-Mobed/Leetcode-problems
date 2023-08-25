@@ -1,0 +1,6 @@
+poblem is straightforward. same as the one on leetcode.
+however inside the loop, i forgot to check whether the stack is empty,
+and we're having a bunch of closing parenthesis added: ))}]
+
+and at the end i forgot to check if the stack is empty. if the stack isnt empty, it means
+that some parenthesis were left open and never closed, so you have to return false.

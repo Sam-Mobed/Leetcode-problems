@@ -8,3 +8,28 @@ you can enqueue as long as you want to your first stack.
 but when we want to dequeue or peek, we use the second stack. to fill the second stack, we pop every element from the first stack, and append each of 
 them to the second stack. this way, the oldest are at the top, and the newest are at the bottom.
 then as long as the second stack isn't empty, we can peek and pop from it. we only have to shift elements if the second stack is empty.
+this is the new code:
+queries = int(input())
+
+def moveItems():
+    while Neweststack:
+        Oldeststack.append(Neweststack.pop())
+
+Oldeststack = []
+Neweststack = []
+for _ in range(queries):
+    query = input().split()
+    if query[0]=='1':
+        Neweststack.append(int(query[1]))
+    elif query[0]=='2':
+        if not Oldeststack:
+            moveItems()
+        Oldeststack.pop()
+    else:
+        if not Oldeststack:
+            moveItems()
+        print(Oldeststack[-1])
+
+
+it passes everything, but it's not a proper object. in my opinion this should be inside of a class.
+but idk what hackerrank is looking for.
