@@ -1,0 +1,10 @@
+the goal of this is to use two stacks to implement queue. i used only one and passed everything, but defeats the purpose.
+
+the solution:
+your first stack will hold every element that you push to it. 
+the logic is this: we dont want to use a single list, because every time the head is dequeud, then every other element needs to be shifted.
+using two stacks avoids this.
+you can enqueue as long as you want to your first stack.
+but when we want to dequeue or peek, we use the second stack. to fill the second stack, we pop every element from the first stack, and append each of 
+them to the second stack. this way, the oldest are at the top, and the newest are at the bottom.
+then as long as the second stack isn't empty, we can peek and pop from it. we only have to shift elements if the second stack is empty.
