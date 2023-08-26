@@ -2,19 +2,17 @@
 Just to test stuff.
 """
 
-def palindromeIndex(s):
-    # Write your code here
-    if s == s[::-1]:
-        return -1
-        
-    n = len(s)
-    for i in range(n//2):
-        if s[i]!=s[n-1-i]:
-            if s[i:n-1-i] == s[i:n-1-i][::-1]:
-                return n-1-i
-            elif s[i+1:n-i] == s[i+1:n-i][::-1]:
-                return i
-    return -1
+def superDigit(n, k):
+    
+    def recursive(num):
+        if len(num)==1:
+            return int(num)
+        result=0
+        for digit in num:
+            result+=int(digit)
+        return recursive(str(result))
+    
+    return recursive(n)
 
 
-palindromeIndex('ababe')
+superDigit('9875',4)

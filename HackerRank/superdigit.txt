@@ -1,0 +1,22 @@
+im continuosly impressed at how fucking dogshit hackerrank phrases its questions.
+it doesn't want the super digit of n, but the super digit of n repeated k times????
+what the fuck is that supposed to mean.
+
+solution:
+def superDigit(n, k):
+    
+    def recursive(num):
+        if len(num)==1:
+            return num
+        result=0
+        for digit in num:
+            result+=int(digit)
+        return recursive(str(result))
+    
+    p = recursive(n)*k
+    return recursive(p)
+
+
+so you find the super digit, then you multiply it (if the super digit is 3 and k=2, we want
+the super digit of 33)
+idk wtv.

@@ -1,0 +1,43 @@
+i pretty implemented the brute force, with n^2 time complexity;
+13/18 tests were passed, but the remaining exceeded the time limit.
+
+my solution:
+def pairs(k, arr):
+    # Write your code here
+    arr.sort()
+    ptr=0
+    counter=0
+    for i in range(len(arr)-1,-1,-1):
+        if ptr==i:
+            if k==0:
+                counter+=1
+            break
+        
+        while True:
+            if arr[i]-arr[ptr]==k:
+                counter+=1
+                ptr+=1
+            elif arr[i]-arr[ptr]>k:
+                ptr+=1
+            else:
+                break
+        ptr=0
+    
+    return counter
+
+The solution:
+def pairs(k, arr):
+    # Write your code here
+    s = set()
+    pairs=0
+    for i in arr:
+        s.add(i)
+    
+    for i in arr:
+        if i+k in s:
+            pairs+=1
+        if i-k in s:
+            pairs +=1
+        s.remove(i)
+    
+    return pairs
