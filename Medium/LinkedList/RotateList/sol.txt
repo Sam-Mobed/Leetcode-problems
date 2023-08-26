@@ -1,0 +1,50 @@
+my first attempt:
+def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        if not head:
+            return head
+        if not head.next:
+            return head
+        if k==0:
+            return head
+        
+        length = 0
+        tmp = head
+        while tmp:
+            tmp=tmp.next
+            length+=1
+        
+        #we get the node that we want
+        length = length-(k%length) #WITH THIs: 1-indexed
+
+        tmp = head
+        while length>1:
+            tmp = tmp.next
+            length-=1
+
+        newtmp = tmp.next
+        tmp.next = None
+        newhead=newtmp
+        if newtmp:
+            while newtmp.next:
+                newtmp=newtmp.next
+            
+            newtmp.next = head
+        return newhead
+
+    
+- first get the length (by taking into considration that k might be longer than the linked list)
+- then get the 'index' of the head that you want to remove from the middle
+- got to that node, put the next pointer of the previous node to None.
+- traverse to the end of the broken linked list, to get the last node.
+- make it so the next pointer of the last node points to the old head.
+- return
+
+i think the logic is sound, even though the code is messy. i passed 216/231 tests. probably just some bug somewhere.
+
+the solution:
+-i wasnt completely off the mark. 
+- you do have to get the length. but when you get the length, also keep a reference to the last pointer,
+  instead of having to find it again.
+- then you want to find out where you want to break off the list into two: the node that you are looking for
+is at length-k-1. this will be the new tail of our linked list. and  length-k will be the new head.
+- but before you have to reassign k to: k=k%length, in case k i s longer than the linked list.

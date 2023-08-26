@@ -1,1 +1,13 @@
-the important part of this problem is how you setup the pointer to your current node, and how you setup the pointer to your previous node.
+the algorithm is in three parts:
+- reach at position left
+- reverse fromn left to right
+- connect everything.
+
+important to use a dummy node. what if the left limit is 1? how would we reverse the list then?
+our normal algorithm wouldn't work, since there is nothing before the head.
+but using a dummy node prevents edge cases like this, and we can proceed normally
+
+at the end you always return dummy.next and you're good.
+you need a previous node, and a current node pointers.
+
+to move on to the next node, save it inside tmp variable.

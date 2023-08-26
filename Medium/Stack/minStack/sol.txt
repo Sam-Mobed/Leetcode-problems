@@ -1,0 +1,32 @@
+class MinStack:
+
+    def __init__(self,val=None):
+        if val:
+            self.stack = [val]
+        else:
+            self.stack = []
+
+    def push(self, val: int) -> None:
+            if not self.stack or val<=self.stack[-1]:
+                self.stack.append(val)
+            else:
+                tmp = self.stack.pop()
+                self.stack.append(val)
+                self.stack.append(tmp)
+
+    def pop(self) -> None:
+        if self.stack:
+            self.stack.pop()
+
+    def top(self) -> int:
+        return self.stack[-1]
+
+    def getMin(self) -> int:
+        if self.stack:
+            return self.stack.pop()
+
+this is my solution. for some reason in the solution top() doesnt refer to the top of the stack????
+i designed the stack in a way that the top element is always the smallest,that way you can always access it through pop, top or getMin in O(1)
+but for some reason the solution doesnt consider everything being in the same stack.
+the solution wants two stacks: one for the order in which the elements have been added, and one for the minimum element at that point inside of the stack.
+idk i feel like at least they would have specified for top() that they care about the order.
