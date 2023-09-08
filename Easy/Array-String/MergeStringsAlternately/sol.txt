@@ -1,0 +1,16 @@
+simple solution, i used two pointers and a boolean variable that would switch between true and false
+after each iteration. after the while loop, we check that both pointers have reached the end of their strings.
+
+
+solution:
+few interesting changes inside the solution.
+you dont need to have an extra boolean variable that switches between true and false.
+if you add one character from word1 on the first line, and then do the same but with word2
+on the second line, it is already alternating.
+
+also, you dont need an if statement to check if the pointers have reached the end of the strings;
+res.append(word1[i:]). if it has reached the end, then we append empty string which doesnt change anything
+if it hasnt, then we append the rest.
+
+appending and updating a string is not an efficient operation, so it's better to have your result
+as a list, and then use the join method.

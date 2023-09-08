@@ -1,0 +1,26 @@
+We know that if we have a single array that isnt sorted, and we want the median, we can simply use 
+quickselect to put the n//2 element in its place
+
+an operation that is simple that we have a single array that is sorted as well.
+but how to solve this when we have two arrays (sorted)
+
+My first idea was to use two pointers, and go along the arrays, if we reach the index==len(m+n)//2
+we stop and either return a pointer if the size of the would-be comibed array is odd, or take 
+(nums1[ptr1]+nums2[ptr2])/2 and return that. the issue with this approach is that what if one of the pointers
+goes out of bounds? and a bunch of other corner cases.
+
+the solution:
+A hint that was given 'The overall run time complexity should be O(log (m+n)).'
+binary search takes O(logn) for one array, and this was a hint that you should use binary search, and 
+i ignored it.
+
+obviously there is an easy solution, combining the arrays and sorting them, or creating a new array
+of length n+m and putting the elements in it. but this wouldnt respect the time complexity restriction
+imposed by the problem.
+
+one issue with this problem is that there are so many corner cases.
+- rename the arrays to A and B to make it simpler
+for the algorithm to work, you have to make sure that A is the smallest of the two.
+
+the hardest part is the partitioning, it would be too long to explain here, so watch this for the
+visualizations: https://www.youtube.com/watch?v=q6IEA26hvXc
