@@ -1,0 +1,7 @@
+fairly straightforward 2 pointers question. just have to be careful with how you increment each ptr.
+
+the solution is a little simple.
+it only has a one if statement, if the right pointer is not a 0, (if nums[r])
+then we perform a swap and increment the left ptr
+
+in pyhton, non-zero integers are considered true

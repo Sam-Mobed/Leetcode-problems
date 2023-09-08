@@ -1,0 +1,7 @@
+i was on the right track, just didnt bother debugging.
+- make sure to iterate over the shortest string
+- be greedy, start with the largest possible gcd
+- we make sure that the length of the substring is a factor of the length of str1 and str2
+- then make sure that the substring times that factor is equal to both str1 and str2
+- make sure that you are using floor division // and not /, as simple division will always return a float,
+even if one number is a factor of the other.
