@@ -1,0 +1,8 @@
+two corner cases, if there is no head node, or if there is only a single node in the linked list.
+in both cases return head (None).
+
+after that, take the length of the linked list by traversing it, then calculate where the middle
+node would be using the floor division operator.
+
+once you reach the node BEFORE the middle node in another traversal, just connect it to the 
+node that is after the middle, and return the head.

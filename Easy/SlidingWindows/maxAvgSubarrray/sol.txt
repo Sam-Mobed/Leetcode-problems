@@ -1,0 +1,11 @@
+the solution that i implemented worked, but it was too slow.
+i was looking at all the subarrays of the length k by taking a subset 
+of the list everytime.
+and i also took the average every time, but this isnt necessary, you dont need to take the avg every time, because k stays the same.
+and if the sum of the values is bigger, naturally so will the avg. so we just need to keep track of the sum.
+
+the other thing concerning the subarrays: you only need to do that once, at the beginning. the observation that is to be made is that at
+each iteration, we subtract the first element of the subarray, and we add an element to the tail of it. instead of taking the subarray each time, we 
+take it once, then we subtract and add to that sum at every iteration.
+
+and at the end, we take the average of the sum that was the greatest and return it.
