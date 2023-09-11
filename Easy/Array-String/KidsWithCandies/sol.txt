@@ -1,0 +1,2 @@
+very straightforward, find the max inside the array using max(candies), then iterate through the 
+array and append True or False to the result array.

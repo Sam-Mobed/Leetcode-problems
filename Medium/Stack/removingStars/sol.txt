@@ -1,0 +1,3 @@
+my solution is simple, you have a list that represents your stack. add a character to it
+if its not a *. if it is a * and the stack isnt empty, pop the last char in it.
+return ''.join(stack)
