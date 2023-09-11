@@ -1,0 +1,14 @@
+you just iterate through the array, check for corner case (first and last element in the array)
+otherwise just check if the left and right elements are 0's, if they are, plant a flower
+
+straightforward. good time and space complexity, the code itself can most definitely be simpler.
+
+solution:
+indeed the code itself is much simpler, the way he handles the edge cases is by adding a 0 to the start
+and the end of the array. and we iterates he goes from indices=1 to len(arr)-2 (since he added dummy values)
+
+and in the end he does: return n<=0
+
+although the code is cleaner, performance is worse, as he creates a whole new array, using extra space,
+and instead of checking inside the array if n<=0 he does it outside, which means that we will always cover the entire
+array even when we dont need to.

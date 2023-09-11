@@ -1,0 +1,9 @@
+simple solution, turn the string into a list, have a set that contains vowels (uppercase and lowercase)
+have two pointers, one at the end of the array and one at the beginning. 
+if one is not pointing to a vowel, it gets incremented/decremented.
+once both point to vowels, they get switched and we increment/decrement again.
+
+my problem was that i trying turning the string into list like this: s.split()
+this will split the string with whitespaces as separators. s.split('') is invalid too
+if you want to turn a string into a list (char by char), you do list(string).
+
