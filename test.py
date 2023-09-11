@@ -2,26 +2,27 @@
 Just to test stuff.
 """
 
-def reverseVowels(s: str) -> str:
-
-    vowels={'a','e','i','o','u','A','E','I','O','U'}
-    s_arr = list(s)
-
-    ptr1, ptr2 = 0, len(s_arr)-1
-
-    while ptr1<ptr2:
-        if s_arr[ptr1] not in vowels:
-            ptr1+=1
-            continue
-        elif s_arr[ptr2] not in vowels:
-            ptr2-=1
-            continue
-        
-        s_arr[ptr1], s_arr[ptr2] = s_arr[ptr2], s_arr[ptr1]
-        ptr1+=1
-        ptr2-=1
+def compress(chars) -> int:
+    nu_chars = len(chars)
+    if nu_chars<2:
+        return nu_chars
     
-    return ''.join(s_arr)
+    i = j = 0
+    while i<nu_chars:
+        count=1
+        while i<nu_chars-1 and chars[i]==chars[i+1]:
+            count+=1
+            i+=1
+        
+        chars[j] == chars[i]
+        j+=1
+        if count>1:
+            for val in str(count):
+                chars[j]=val
+                j+=1
+        i+=1
+    
+    return j
 
 
-reverseVowels('hello')
+compress(["a","b","b","c","c","c"])

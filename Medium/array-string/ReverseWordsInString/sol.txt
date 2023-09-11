@@ -1,0 +1,5 @@
+pretty simple. i tried doing it in a pythonic way by writing a one liner.
+i couldnt figure it out. 
+nevertheless, you do s.split() which gets rid of all whitespaces.
+then you use two pointers ptr1=0 and ptr2=len(s)-1 to swap elements as long as ptr1<ptr2
+then you return ' '.join(s)

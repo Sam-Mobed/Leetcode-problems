@@ -1,0 +1,14 @@
+pretty disgusting question. i solved it with two pointers. one traverses the array while
+arr[ptr1]==arr[ptr2] and ptr2<len(arr).
+once the two characters dont match, we check ptr2-ptr1. and if it is greater than 1,
+every indice between ptr1+1 and ptr2 will be arr[i]='*'
+and we calculate the diff between ptr1 and ptr2, and for each digit in str(diff)
+we write it in the space between ptr1 and ptr2.
+if there are any remaining starts between the two pointers, we pop them, and continue with the problem
+
+unnecessarily convoluted, and it didnt pass all test cases.
+
+
+Turns out the solution is convoluted too, you have no choice but to use two pointers.
+you use two pointers, iterate through the array, pop all the repeating chars, add the count as separate
+digits.
