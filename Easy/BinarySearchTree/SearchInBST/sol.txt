@@ -1,0 +1,6 @@
+all you have to do is leverage the properties of a BST. run a recursion on the given function.
+your base case is that root is none, which means the tree is empty or the node/path where the value
+is supposed to be doesnt exist, so we return None.
+
+otherwise, if the value is greater than root.left, search right subtree. otherwise look at the left one.
+

@@ -1,0 +1,6 @@
+standard BFS question. create a queue Deque([root]) (we are guaranteed
+tree size of at least 1).
+then while the queue isnt none, calculate the sum of each level, and keep
+track of the currrent level.
+
+at the end just return maxlevel.
