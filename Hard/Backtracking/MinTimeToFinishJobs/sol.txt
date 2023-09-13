@@ -1,0 +1,33 @@
+This is a backtracking problem. but it can also be turned into a linear programming problem.
+minimize the maximum of...subject to constraints...
+
+focus on the backtracking solution:
+the code itself isnt complex, but there's a lot going on.
+you have a workers list of length k that keeps track of the time each
+worker is doing to finish all jobs.
+
+your recursive function that does the backtracking takes in two values,
+the index of jobs array that the call stack should look at, and the currentMaxtime.
+the currentMaxtime is a threshhold that we set to avoid checking branches that go over
+our current answer.
+In other words, if the maximum time done by a worker in a call stack is larger than the answer we currently have,
+then we ignore out and return from that recursive call.
+
+otherwise we check if the index is equal to the length of the jobs array. if it is it means that every job has been assigned
+to a worker, and we want to see if the currentMaxtime is smaller than the current answer or not.
+if it is smaller, then we have found a new minimum.
+
+now the most important part of the algorithm.
+a set that contains values that we have already explored for a worker.
+This set exists for each call stack, and serves as a tracker for the values a worker has taken.
+if in our for loop we have seen the values {3,5,8} so far (no matter which worker has done those times),
+we wont check worker[j] if the value it contains is already in the set.
+
+without this, our algorithm would be considerably slower, as we could have workers array like so:
+workers = [10,10,10,10]
+and without the set, we would explore the same combinations for each index, which isn't necessary. only do it once
+at i=0, add 10 to the set, and our tree becomes much simpler.
+
+inside the if statement, is standard logic for backtracking. add one of the jobs to the worker, then do recursion with the next job.
+once it exits the recursion, subtract the job you added, so we can try it with the next worker (unless it has the same value as the one we Just
+looked at.)

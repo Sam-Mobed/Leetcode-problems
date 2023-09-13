@@ -2,27 +2,34 @@
 Just to test stuff.
 """
 
-def compress(chars) -> int:
-    nu_chars = len(chars)
-    if nu_chars<2:
-        return nu_chars
-    
-    i = j = 0
-    while i<nu_chars:
-        count=1
-        while i<nu_chars-1 and chars[i]==chars[i+1]:
-            count+=1
-            i+=1
+def minimumTimeRequired(jobs, k: int) -> int:
+
+    def backtrack(i,currMaxTime):
+        nonlocal ans,n,workers
+
+        if currMaxTime>=ans:
+            return ans
         
-        chars[j] == chars[i]
-        j+=1
-        if count>1:
-            for val in str(count):
-                chars[j]=val
-                j+=1
-        i+=1
-    
-    return j
+        if i==n:
+            ans = min(ans,currMaxTime)
+            return
+        
+        timeset = set()
+        for j in range(k):
+            if workers[j] not in timeset:
+                workers[j] += jobs[i]
+                backtrack(i+1, max(currMaxTime, workers[j]))
+                workers[j]-=jobs[i]
+
+                timeset.add(workers[j])
+
+    n = len(jobs)
+    workers = [0]*k
+    ans = float('inf')
+
+    backtrack(0,0)
+
+    return ans
 
 
-compress(["a","b","b","c","c","c"])
+minimumTimeRequired([3,2,3],3)

@@ -1,0 +1,24 @@
+you need to have a prev variable set to None. this keeps track of the previous
+node.
+you also need a 'node' variable that keeps track of the current node that we are looking at
+
+while node isnt none, we store node.next inside of a tmp variable.
+we set node.next to prev, and we set prev to node.
+tmp = node.next
+node.next = prev
+prev = node
+node = tmp
+
+once we are out of the loop, we return the prev variable, which is now
+the head of the linked list. 
+
+can also be done recursively with a helper function:
+def reverse(prev, node):
+    if not node:
+        return prev
+    tmp = node.next
+    node.next = prev
+    prev = node
+    node = tmp
+    reverse(prev,node)
+reverse(None, head)
