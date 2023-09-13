@@ -1,35 +1,32 @@
 """
 Just to test stuff.
 """
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
-def minimumTimeRequired(jobs, k: int) -> int:
+def oddEvenList(head):
 
-    def backtrack(i,currMaxTime):
-        nonlocal ans,n,workers
+    if not head or not head.next:
+        return head
+    
+    oddll = head
+    evenll = head.next
+    newhead = oddll #the head of the odd list, which will be the head of entire ll
+    split = evenll #the head of the even list
+    tail = oddll
+    while evenll and oddll:
+        oddll.next = evenll.next
+        evenll.next = None
+        if oddll.next:
+            evenll.next = oddll.next
+            tail = oddll.next
+        oddll, evenll = oddll.next, evenll.next
 
-        if currMaxTime>=ans:
-            return ans
-        
-        if i==n:
-            ans = min(ans,currMaxTime)
-            return
-        
-        timeset = set()
-        for j in range(k):
-            if workers[j] not in timeset:
-                workers[j] += jobs[i]
-                backtrack(i+1, max(currMaxTime, workers[j]))
-                workers[j]-=jobs[i]
+    tail.next = split
+    return newhead
 
-                timeset.add(workers[j])
-
-    n = len(jobs)
-    workers = [0]*k
-    ans = float('inf')
-
-    backtrack(0,0)
-
-    return ans
-
-
-minimumTimeRequired([3,2,3],3)
+ll= ListNode(1)
+ll.next = ListNode(2)
+oddEvenList(ll)

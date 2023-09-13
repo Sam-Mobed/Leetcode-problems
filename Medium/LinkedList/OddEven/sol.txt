@@ -1,0 +1,14 @@
+i had the right idea; you define two variables, oddll and evenll. 
+and you do
+newhead = oddll
+split = evenll
+while evenll and evenll.next:
+    oddll.next = evenll.next
+    oddll = oddll.next
+    evenll.next = odd.next
+    evenll = evenll.next
+
+oddll.next = split
+return newhead
+
+

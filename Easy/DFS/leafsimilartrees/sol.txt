@@ -1,0 +1,7 @@
+i solved it using two lists, appending each leaf to the corresponding list
+and then returning list1==list2
+
+this algorithm has linear time and space complexity.
+
+solution:
+seems like other solutions also have this time/space complexity.
