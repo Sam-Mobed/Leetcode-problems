@@ -1,0 +1,5 @@
+straightforward. you can just use an extra argument in your recursive 
+dfs helper function that keeps track of the maximum node.val in that path
+
+#that way its guaranteed to be replaced
+dfs(root,float('-inf'))

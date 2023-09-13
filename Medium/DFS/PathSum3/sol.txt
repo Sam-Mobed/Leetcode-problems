@@ -1,0 +1,11 @@
+the way i solved this is pretty clever, but the time/memory complexity isnt great
+the recursive function takes in a second argument, a list of the nodes on the path we are looking at.
+when we reach a node, we append it to this list (we also check if on its own its ==targetSum), then we add the node.val
+to the rest of the values inside of the list. 
+we go in the left and right branches, and once we exit return from both, we pop the value the last value on the list (representing the value of the 
+current node) and we decrement it from the rest of the values in the branch. 
+
+overall this is pretty inefficient, but it works.
+
+solution:
+you can setup a cache instead of having a list that you pass as an argument inside of your function. but overall similar to other solutions.
