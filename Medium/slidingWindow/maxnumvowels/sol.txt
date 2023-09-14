@@ -1,0 +1,35 @@
+my attempt:
+ def maxVowels(self, s: str, k: int) -> int:
+
+        vowels = {'a','e', 'i', 'o','u'}
+        ptr = 0
+        res = 0
+
+        count = 0
+        for i in range(0,k):
+            if s[i] in vowels:
+                count+=1
+        res = max(res,count)
+        while ptr<len(s):
+            if s[ptr] not in vowels:
+                ptr+=1
+                continue
+            elif ptr+1-k<0:
+                ptr+=1
+                continue
+            count = 0
+            for i in range(ptr+1-k,ptr+1):
+                if s[i] in vowels:
+                    count+=1
+            res = max(res,count)
+            ptr+=1
+        return res
+
+this code passed 102/106 tests, failing last ones because time limit exceeded.
+pretty straightforward algorithm, but obviously not elegent, and it repeats code as well. 
+
+solution: instead of having the convoluted code, notice that you can just add a char to your window from the right, and you are removing a char 
+from the left of the window. if the left char was a vowel, then your current count of vowels is decremented, if your right char is vowel,
+then your count is incremented.
+then you do res = max(res,count)
+code is much simpler and efficient; it can be more elegant but wtv.

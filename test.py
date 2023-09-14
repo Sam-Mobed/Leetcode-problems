@@ -1,32 +1,22 @@
 """
 Just to test stuff.
 """
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
 
-def oddEvenList(head):
+def maxOperations(nums,k) -> int:
 
-    if not head or not head.next:
-        return head
-    
-    oddll = head
-    evenll = head.next
-    newhead = oddll #the head of the odd list, which will be the head of entire ll
-    split = evenll #the head of the even list
-    tail = oddll
-    while evenll and oddll:
-        oddll.next = evenll.next
-        evenll.next = None
-        if oddll.next:
-            evenll.next = oddll.next
-            tail = oddll.next
-        oddll, evenll = oddll.next, evenll.next
+    c = Counter(nums) # Counter({1: 1, 2: 1, 3: 1, 4: 1})
+    res = 0
+    seen = set()
 
-    tail.next = split
-    return newhead
+    for x in c:
+        if x not in seen and (k-x) in c:
+            if x==k-x:
+                res += c[x]//2
+            else:
+                res += min(c[x],c[k-x])
+            seen.add(x)
+            seen.add(k-x)
 
-ll= ListNode(1)
-ll.next = ListNode(2)
-oddEvenList(ll)
+    return res
+
+maxOperations([3,1,3,4,3],6)

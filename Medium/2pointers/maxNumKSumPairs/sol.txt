@@ -1,0 +1,27 @@
+first attempt was turning the list into a set. (look for abs(n-k), then remove it with n) this doesnt work, as sets can only contain keys that 
+are unique, and we may have values that repeat inside the list.
+
+
+solution: 
+this isn't a two pointer solutions. in fact there are many ways to solve this. 
+
+- use a counter object that will create a dictionary where the keys are the values inside of the list, and the values are the number of times
+they show up in the list.
+- you also need a seen set() for when you have already visited.
+
+then you can iterate over the keys of the counter.
+- if the key x has not been visited and  k-x is inside the dictionary:
+    then we need to add the minimum between c[x] and x[k-x] to our result variable.
+    we do this because values can be repeated inside of the list.
+    example: if our target is 5, and we have {2:2,3:6}, we can only create
+    two pairs out of the values 2 and 3.
+
+    and a corner case we would have is if x==k-x. in this instance, we do
+    res += c[x]//2.
+    why? because if target=6 and we have {3:8} we can make 4 pairs of 3's.
+
+- after this, add both the keys x and k-x to the seen set, and move on.
+
+
+the time performance of this algorithm is very good, but it uses more memory because of the seen set and
+the counter dictionary. alternatively you could use sort and binary search for less memory but slower algo.
