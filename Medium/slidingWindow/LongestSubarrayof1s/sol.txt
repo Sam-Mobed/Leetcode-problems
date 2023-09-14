@@ -1,0 +1,15 @@
+my solution:
+have a variable that keeps track of the index that you 'removed'
+you have a left pointer initialized at 0,
+
+res = 0
+remove = -1
+
+for r, bit in enumerate(nums):
+    if not bit: #we hit a 0
+        if remove!=-1: #we dont change the left ptr if 0 is at the first index
+            l=remove+1 #we have to move one index from the previous 0 we 'removed'
+        remove = r
+        res = max(res, r-l)
+
+return len(nums)-1 if remove==-1 else res
