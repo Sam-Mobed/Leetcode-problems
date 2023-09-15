@@ -1,0 +1,22 @@
+you can solve this problem with time complexity O(n) and space complexity O(n)
+by iterating over the nums array once and creating a leftmin list, which is a
+list of the same size of nums, and stores the smallest value to the left of or at 
+the same index i.
+
+do the same but this time for another list called right max. 
+
+then you iterate over nums one last time, and you check if you can satisfy the following
+leftmax[i]<nums[i] and nums[i]<rightmax[i]
+
+
+solution wiht O(1) space:
+you have two variables that keep track of the VALUES of the left num and the middle num
+you initialize them to float('inf'), so its guaranteed that they will be substituted.
+
+you iterate over the numbers in nums(no need to look at the indices), and 
+your first check is to see if n<=left. if it is set left=n
+elif n<=middle: middle=n
+else:return True
+
+hard to understand at first, but if you run it on some examples you see how it works.
+the order of the checks is the most important part.
