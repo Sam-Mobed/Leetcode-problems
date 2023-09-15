@@ -1,0 +1,16 @@
+my solution was to turn both lists into sets.
+and then have two loops that iterate over the sets, and if one element is not inside
+the other set, then we append to result array's appropriate sublist.
+
+you can't use zip() to iterate over both sets simoultaneously, so you have to iterate
+inside two different loops.
+
+the time complexity is O(n+m)
+and the space complexity is also O(n+m). not great
+
+the solution:
+the exact same thing i did, but the sublist were sets instead, so that 
+repeated elements arent stored twice. he would then cast these sets into lists 
+and return them inside one list.
+
+i still passed by using lists directly so wtv.

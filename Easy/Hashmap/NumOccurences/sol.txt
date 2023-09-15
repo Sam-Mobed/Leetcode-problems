@@ -1,0 +1,8 @@
+instead of going through a loop and counting the number of occurences
+myself, i used a Counte object and passed the list, which does the same thing.
+counter = Counter(arr)
+
+after that, i declared an empty set, and iterated through the values of the counter's keys,
+checking if the value that i want to add is already there or not. if it's already there, just return false.
+once we get out of the loop, it means that we found no duplicates, so return true.
+O(n) time and space complexity.
