@@ -6,3 +6,11 @@ after that, i declared an empty set, and iterated through the values of the coun
 checking if the value that i want to add is already there or not. if it's already there, just return false.
 once we get out of the loop, it means that we found no duplicates, so return true.
 O(n) time and space complexity.
+
+alternative solution:
+create a counter, and then create a set but only with the values of 
+the counter. set(counter.values())
+
+then check if the size of the set is the same as the size of the counter,
+if the sizes are different, it means that two keys had the same value, and one of them
+got removed, resulting in a smaller size in the set.

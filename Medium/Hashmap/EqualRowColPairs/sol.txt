@@ -1,0 +1,20 @@
+i solved the problem without using dicts or sets, all i did was to iterate over
+each row, and for each row iterate over each column.
+then i would check if all the values inside the row match the value inside 
+of the colum we are looking at, and if it is the case, increment the count variable which we 
+return at the end.
+
+this solution uses O(1) space, but has a horrible time complexity O(n^3)
+
+solution:
+iterate over the rows once, turn each row into a tuple and store it as a key inside
+a dictionary you will create. this dictionary will store the rows as its keys, along with
+the frequency of each row (how many times the same row appears inside of the grid).
+
+then you have to take the transpose of the matrix, and iterate over its rows.
+if a row is inside our dictionary, then we add its correspnding value to our count
+variable, which we will return at the end of the algorithm.
+example: if inside the transpose we find a row that is inside our dictionary, and the value is 2, 
+it means that in the original matrix there are two rows that match this column, so we add 2 to the count.
+
+i dont know how to get the transpose of matrix so i just ran a nested for loop.
