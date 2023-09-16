@@ -1,0 +1,21 @@
+you need to understand that with problems related to intervals, you need to organize your logic. the problems themselves aren't
+hard, and the code itself definitely isn't complicated either.
+
+i tried channging the intervals list in place, which was unnecessary and made things a lot more complicated.
+
+start with res = []
+you will build it by iterating through the intervals.
+first condition is to check whetehr interval[0]>newInterval[1]
+- this means that from this point on, the rest of the intervals will be bigger than the last element of our newinterval.
+    we wont need to merge anything, so just return res + intervals[index:]
+    this is inside the loop, and will be executed most of the time.
+
+then check if interval[1]<newInterval[0]
+- this means that the interval is smaller than the one we want to add, and there is no overlap so we can just add it to result.
+
+then for all other cases, we merge by doing:
+newInterval  = [min(interval[0],newInterval[0]),max(interval[1],newInterval[1])]
+
+if we exit the loop, that means that the newInterval has swallowed the last intervals inside the original array, and is the last
+one that should be added to the array.
+so append it to res and return res.
