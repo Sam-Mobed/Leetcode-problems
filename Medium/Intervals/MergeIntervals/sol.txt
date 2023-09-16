@@ -1,0 +1,17 @@
+in my first attempt, i would have a res list that would contain all the new non-overlapping intervals. i had a nested for loop.
+the outer for loop went through the intervals,the inner loop went through the new non-overlapping intervals.
+and inside it i would check if there are any overlaps, and merge them inside (either substituting the head and/or the tail of an interval
+inside of my result array in case i find an overlap)
+
+the problem with this is that it's inefficient, having O(n^2) as time complexity, and O(n) as space complexity if you count the res return variable.
+
+also, once we check all intervals, we only merge with one other interval, whereas we might have to merge with multiple other intervals.
+
+solution:
+turns out that you actually have to sort the given array. thought about it but didn't investigate.
+
+this is how you would sort a nest sublist. intervals.sort(key= lambda i : i[0])
+and we want to sort based on the starting value, we dont rlly care about end value until we start merging.
+important to draw these intervals on paper ot understand why we have to sort by the first value of each pair.
+
+start your result list with intervals[0] to avoid edge cases, instead of having it empty.

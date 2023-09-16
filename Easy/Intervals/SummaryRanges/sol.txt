@@ -1,0 +1,14 @@
+i solved this with a stack: you iterate through the numbers, and if the stack isn't empty, you check if the difference between
+the top element and the number you are looking at is one. if that's the case, then you append the number you are looking at to the stack.
+once you reach a number that doesnt respect this condition, you take stack[0] and stack[-1] and add put them together inside of an fstring,
+and add that fstring to the result array.
+
+once you exit the loop, you have to check if the stack is empty. if its not, take out the last interval and add it to res list.
+
+my solution has a few problems. it has repeated code (the code i use to add interval to res list is same inside and outside loop).
+instead of doing stack[0] i use a while loop that pops everything (because i want to clear the stack, but just doing stack=[] is enough)
+
+and i also use linear memory, but im fairly sure that you can use three pointers to solve the problem without any extra memory.
+
+solution:
+yes, this can be solved with three pointers, giving a solution that uses constant memory.
