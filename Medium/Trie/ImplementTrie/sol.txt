@@ -1,0 +1,12 @@
+one thing that i missed; every node is a Trie itself, and contains a val attribute, and a children attribute. but it needs to have one last
+attribute called end, which indicates if this is the end of a string that we inserted (True/False)
+
+Solution:
+instead of having every node inside of the Trie be a Trie itself, which is arguably unnecessary come to think of it, we implement a separate
+object called TrieNode which has a dictionary and a boolean as an attribute.
+
+and instead of storing the character of a node inside of a separate attribute, we turn the children set into a dictionary, and the keys of the
+dictionaries become the value(s) that we store.
+
+once you understand how to use a TrieNode in your implementation, the rest of the code becomes straightforward.
+have a cur pointer that start at self.root, then iterate over the characters inside of the word/prefix, and so on.

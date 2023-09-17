@@ -1,0 +1,17 @@
+problem seems pretty difficult at first, but its more straightforward if you analyze it.
+
+in your function you need three arguments, the node you are looking at, the count which represents the height of the 
+zigzag up to that point and finally an argument called zigzag which is a string representing the direction that the parent of the node
+took. 
+
+this is useful to us, because if the parent of a node took the right direction, then we have to reset the count variable to 0 when we want
+to check the right child. but if the parent is 'right' and we want to check the left child, then we can pass count+1 as it is a zigzag and it 
+respects our constraint.
+
+outside the helper function you pass dfs(root, None, 0).
+inside the helper we check if node is none.
+then we have to check the corner case of this problem: if the node we are looking at is root (nonlocal root).
+because if it is, then it has no parent, so we do return max(dfs(node.left, 'right', counter+1), dfs(node.right,'left',counter+1))
+which is something we dont do in any other case.
+
+then we check if zigzag is left or right, and reset or increment the counter depending on the case.
