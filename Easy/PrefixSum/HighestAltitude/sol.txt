@@ -1,0 +1,6 @@
+you have two variables, one that will keep track of the maxAltitude,
+and one that will keep track of the current altitude.
+iterate through the gain list, add every number in it to the current altitude,
+and then get the max between current altitude and wtv you have as the max.
+
+return the max variable.

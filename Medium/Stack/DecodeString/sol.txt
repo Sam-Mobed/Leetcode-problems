@@ -1,0 +1,13 @@
+this one is tricky; 
+you have to add to the stack until you reach a ']'
+once you reach a closing bracket, you create a substring
+by popping the top of the stack until you reach an opening bracket
+
+then you have to form the number before the opening bracket. so 
+while stack and stack[-1].isdigit()
+    k = stack.pop()+k
+
+now you concatinate everything and add it back to the stack.
+stack.append(int(k)*subsr)
+
+and you continue on.
