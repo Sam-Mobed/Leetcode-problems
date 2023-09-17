@@ -1,0 +1,20 @@
+my first attempt was implementing a Trie and then having a custom method that would traverse the tree and print at most three words that 
+match the current prefix that we are looking at. this is definitely a valid solution, but the implementation itself was kind of cancer, and 
+there is a much easier way to do this. another issue with the Trie approach was handling the case where you have more than three options, 
+and returning the top results that match the alphabetical order.
+
+solution:
+you can use two pointers to solve this problem. start by first sorting the products list.
+then go char by char and build up your string. if the first char of the word pointed to by your left pointer doesnt match, increment itself
+do the same with your right pointer, but this time decrement it.
+create a sublist for every iteration, and append it to a result list.
+keep going until you finish the lookup word.
+
+you can use .sort() on an array of strings, and it works.
+
+when i tried writing my own solution, it was similar to the neetcode one, but i missed some details. 
+inside your two while loops, you have to check if len(products[l])<=i
+this will skip words that are shorter than the index that we are looking at, so we avoid errors.
+
+then when you want to add the element to your sublist, you can do (for k in range(min(3,r-l+1))) 
+which will ensure that we have at most three results in the sublist.

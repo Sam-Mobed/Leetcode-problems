@@ -1,0 +1,30 @@
+when it comes to the TrieNode object, initializing and adding
+a word to the trie, this problem is exactly the same as a normal
+Trie data structure. 
+
+the only difference comes in when you have to search for words that have a dot.
+the dot doesnt need to be matched to any character that is inside the tree, it can
+be anything.
+
+if it can be anything, then all you have to do is look inside all of the children of the current
+node that you are looking it, and continue your search with the rest of the word word[i:]
+
+and you can have multiple dots too. to fix this, i added a helper function outside of the search method.
+the difference is that this search function accepts one extra argument, the node that you will start at.
+the normal search method starts at the root, but this one will start at whatever node is passed to it.
+and it can recursively call itself for the other dots that it finds. 
+
+so you do:
+for i,c in enumerate(word):
+    if c==.
+        newword = [i+1:]
+        for child in node.children:
+            if self.helper(newword,node.children[child])
+                return True
+        return False
+    elif c not in children:
+        return False
+    else:
+        node = node.children[c]
+
+return node.endStr
