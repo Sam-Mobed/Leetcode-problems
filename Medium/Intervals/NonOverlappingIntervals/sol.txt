@@ -1,0 +1,6 @@
+classical intervals problem. the issue i had with my solution was counting the removed intervals. i was keeping track of the
+longest interval so far, but this would cuck me if multiple overlapping intervals are of the same size.
+also you dont need to keep track of the start value here.
+
+instead of keeping track of the longest interval, you have one value endVal that constantly updates to the smallest right boundary 
+of the intervals that you are looking at. 

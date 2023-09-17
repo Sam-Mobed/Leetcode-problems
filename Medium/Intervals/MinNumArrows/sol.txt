@@ -1,0 +1,21 @@
+again, same with every other interval problem. draw the line, and draw the intervals on top to visualize the problem. 
+here again you have to sort the intervals array before you start the problem.
+you have an arrows counter initialized to 1 (there will be at least one balloon)
+and a left,right pointer that keep track of the interval of the last balloon. they are initialized to the values of interval[0]
+then iterate over the rest of the interval for start,end in intervals[1:]
+if start<=right, that means we dont need to use another arrow, and we can adjust the boundaries like so
+left = max(left, start)
+right = min(right,end)
+
+then you use else, which means that we didnt find an overlap, and have to use an extra arrow, so increment arrow and set:
+left=start
+right=end
+
+the key to this problem is thinking of this corner case:
+
+    ..................................................
+            ............
+                                ............
+:------------------------------------------------------------>
+
+here you have one balloon that is really large, and two balloons that are smaller.
