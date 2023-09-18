@@ -1,0 +1,19 @@
+not difficult to understand, but you cant implement it using a 
+normal list.
+nevermind, actually you can. i skipped a note that said that it is guaranteed 
+that every call to ping is strictly greater than the previous one. so the array will
+always be sorted.
+so instead of going through the list from the start, go through the end
+and if you reach a value that doesnt respect the constraint, break out of the loop.
+
+still a horrible runtime tho.
+
+solution:
+instead of using a list, use a queue data structure. you append to the right of it, as you normally do.
+but every time a value at the start of the list falls out of bound, we use popleft to remove it.
+this way the list stays small.
+
+have a count attribute, which keeps track of the number of queries that respect the interval.
+more efficient than calculating the lenght of the array everytime
+
+and you only need to check the lower bound. the upper bound is t itself, so it will always be respected.
