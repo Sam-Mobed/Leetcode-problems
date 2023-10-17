@@ -1,0 +1,11 @@
+I used a simple DFS solution here. Since they ask for the root-to-leaf paths as a list of the node vals, you will use some extra memory
+in the solution, you don't really have a choice.
+
+so you have a helper function that goes inside each branch. it keeps track of the current node and the list of values that you have in that recursive call.
+each time we reach the target sum, we make a copy of the list and append it to a res=[] variable that exists outside the helper function
+
+the helper func checks if we have reached a leaf node. if we have, we check if the sum of the list matches the target sum. if it does, we append 
+the copy of the list to res. if not, we return from the call. every time we return from a call, we pop the last value inside the valList argument
+to mark the fact that we are backtracking within the tree.
+
+the solution is pretty much the same. my code can be cleaner though, otherwise good.

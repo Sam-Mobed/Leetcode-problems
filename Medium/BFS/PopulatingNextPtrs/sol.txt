@@ -1,0 +1,28 @@
+I decided to run a BFS for this problem.
+
+the logic is that for the queue, instead of appending the children of each level from left to right, I would append them from right to left.
+
+I would also keep track of a right variable, initialized to None before we start looping over a level.
+
+when you loop over a level, you pop from the left of the queue, you assign its node.next = right
+and then you do right = node
+
+then you add the children of each node to the queue.
+
+Solution:
+Easiest solution is ofc BFS, but this can be done with DFS as well.
+remember, this is a perfect binary tree, and a parent has access to both children, so it can easily connect them. 
+The probem arises when you go inside deeper levels of the tree, and you have to connect nodes in different subtrees.
+
+The leetcode problem is that using recursion in a DFS solution counts as a O(1) memory solution.
+But this isn't a true O(1) memory solution, because of the usage of the recursive call stack.
+
+The true O(1) memory solution uses a clever 2 pointer approach.
+It takes advantages of the fact that the next pointer of a node will connect separate subtrees.
+you have your cur pointer, which points to the 'root' of subtree that you are looking at.
+then you have a nxt pointer, which refers to the left child of the cur pointer.
+
+It's hard to write down  every step of the algorithm, as there are so many pointers it becomes really abstract.
+but checkout the video and draw out the solution to visualize it.
+
+the solution comes from: https://www.youtube.com/watch?v=U4hFQCa1Cq0
