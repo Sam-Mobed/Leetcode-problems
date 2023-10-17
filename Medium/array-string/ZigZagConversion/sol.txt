@@ -1,0 +1,26 @@
+I used a matrix to solve this problem. My solution uses O(nm) memory, and O(n) runtime.
+The idea is that you declare a matrix with a set number of rows. it can have as many columns as it needs, but its number of rows is fixed.
+the next step is to go through the string char by char. you need to keep track of the row and the column you are appending to by using two 
+pointers, row and col. first you append to a column, until you reach the last row. keep in mind that we are appending characters starting from
+row=0 to row=n-1
+
+Once we notice that we have reached the last row, we start appending chars to the next column. However, this time we go from row=n-2 to row=0.
+Then we switch it up again, until our ptr that keeps track of where we are inside of the string reaches the end. 
+
+at the end, we go through each row, and join each list: 
+for index,row in enumerate(matrix):
+    matrix[index] = ''.join(row)
+
+return ''.join(matrix)
+
+Solution:
+obviously my solution is not very memory efficient. but at least it's intuitive. the memory-efficient solution is not intuitive at all.
+The idea it uses is that you can draw each zigzag pattern, and count the jump that you have to take to reach the next character in the same row.
+for example if s=PAYPALISHIRING and nrows=4
+then first row would be P I N
+and to go from P to I to N, we have to make a jump of 6 each time. 
+However, this logic doesn't work for rows between the first and the last one. For the middle rows, we not only have to make the jump of 6, but we 
+have to make smaller jumps to catch characters in the middle as well.
+and this jump gets smaller for each row that is closer to n.
+
+despite its flaws, the solution is still interesting, and would be nice to check out again in the future: https://www.youtube.com/watch?v=Q2Tw6gcVEwc

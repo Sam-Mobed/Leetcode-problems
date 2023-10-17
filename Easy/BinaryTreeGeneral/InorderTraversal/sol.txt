@@ -1,0 +1,4 @@
+all you have to do is write the code for inorder traversal.
+What inorder traversal entails: check current node, check left node, check right node.
+
+really straightforward, you don't even need helper function. 
